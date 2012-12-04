@@ -7,14 +7,11 @@ Ext.Loader.setConfig({
 Ext.Error.handle = function(err) {
   Ext.Msg.alert('Failure', err.msg);
 };
-// new change1
+
 Ext.override(Ext.data.AbstractStore,{
     indexOf: Ext.emptyFn
 });
 
-// new change 2
-
-/// change 3
 Ext.state.Manager.setProvider(new Ext.state.CookieProvider({
   expires: new Date(new Date().getTime()+(1000*60*60*24*7)) //7 days from now
 }));
