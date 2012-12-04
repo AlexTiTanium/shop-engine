@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Engine error</title>
+
+  {% block header %}
+    {{ addCss('css/error') }}
+  {% endblock %}
+
+</head>
+<body>
+
+<div id="error">
+  <div class="error-wrapper">
+
+    <div class="error-icon"></div>
+
+    <div class="error-content">
+      <h1>Произошла ошибка выполнения приложения:</h1>
+
+
+      <div class="error-msg">{% block message %}{{ message }}{% endblock %}</div>
+
+      <hr/>
+
+      <div class="error-msg">
+        Если ошибка повторяется, обратитесь к разработчику для её устранения.
+        Возможно, вы выполняете не ожиданье действия для системы, что и вызывает ошибку.
+      </div>
+
+      <div class="error-backBtn">
+        <a class="backBtn" href="javascript:history.go(-1)">Вернутся назад</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

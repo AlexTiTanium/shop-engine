@@ -1,0 +1,7 @@
+mons: ['', 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря']
+siteName: 'lotos.ks.ua'
+siteUrl: 'http://lotos.ks.ua'
+timeZone: 'Europe/Moscow'
+
+# System code uses for generation salt, don`t lost it! And don`t change!
+systemCode: 'anTiHakefdd4ffg5efsdfererr4t'

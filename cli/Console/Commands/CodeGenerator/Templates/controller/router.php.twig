@@ -1,0 +1,10 @@
+<?php
+
+{% for path in use %}
+use {{ path }};
+{% endfor %}
+
+$router = Core::getController('{{ controller }}')->getRouter()->logged();
+
+// Default
+#$router->addEventListener('DefaultListener')->When(array('type'=>'json'));

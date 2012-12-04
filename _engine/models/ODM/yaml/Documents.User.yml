@@ -1,0 +1,32 @@
+Documents\User:
+  collection: users
+  repositoryClass: 'models\ODM\Repositories\UserRepository'
+  fields:
+    id:
+      type: id
+      id: true
+    date:
+      type: date
+    login:
+      type: string
+    password:
+      type: string
+    email:
+      type: string
+    enable:
+      type: boolean
+    forgot_password_hash:
+      type: int
+    forgot_password_date:
+      type: date
+    exp_online:
+      type: int
+    activationHash:
+      type: string
+  indexes:
+    login:
+      keys:
+        login: desc
+      options:
+        unique: true
+        safe: true

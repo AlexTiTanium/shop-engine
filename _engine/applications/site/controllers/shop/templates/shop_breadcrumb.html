@@ -1,0 +1,11 @@
+<div class="wrap">
+  <a href="/">Главная</a> <span>&rarr;</span>
+  {% for path, name in breadcrumb %}
+
+    {% if not loop.last %}
+      <a href="{{ url_catalog('/catalog',path) }}">{{ name }}</a> <span>&rarr;</span>
+    {% else %}
+      <h1>{{ name }}</h1>
+    {% endif %}
+  {% endfor %}
+</div>

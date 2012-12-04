@@ -1,0 +1,14 @@
+login:
+  type: string
+  validators:
+    req: true
+    min: 3
+    max: 15
+    onlyLetNumSpec: true
+
+password:
+  type: string
+  validators:
+    req: true
+    min: 4
+    max: 100

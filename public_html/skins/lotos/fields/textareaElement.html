@@ -1,0 +1,6 @@
+{% import "forms.html" as forms %}
+
+<fieldset>
+  {{ forms.label(id, label, validation.req) }}
+  {{ forms.textarea(id, name, value, rows, class, size, error, readonly, style ) }}
+</fieldset>

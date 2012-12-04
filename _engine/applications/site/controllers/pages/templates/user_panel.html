@@ -1,0 +1,27 @@
+<div id="user-panel-info" class="grid_3">
+  <img class="login-icon" src="{{images}}/login_icon.gif" alt="Войти в личный кабинет"/>
+
+  <h1 class="user-panel-login">{{userLogin}}</h1>
+
+  <h2>В личный кабинет</h2>
+</div>
+
+<div id="user-panel-content" class="grid_10">
+
+  <div class="user-reserve">
+    <h4>Ваш резерв:</h4>
+    <h3>{{ userReserve|toMoney }} <span>руб.</span></h3>
+  </div>
+
+  <div class="user-balance">
+    <h4>Ваш баланс:</h4>
+    <h3>{{ userBalance|toMoney }} <span>руб.</span></h3>
+  </div>
+
+</div>
+
+<div id="user-panel-btn" class="grid_3">
+  <div class="user-enter">
+    {{ forms.action_button('user-enter-btn', '/'~userType~'.html', 'black-small-arrow-button', 'Перейти в систему') }}
+  </div>
+</div>

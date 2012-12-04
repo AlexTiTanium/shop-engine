@@ -1,0 +1,5 @@
+Connection:
+  default:
+    base: 'lotos'
+    login: false;
+    password: false

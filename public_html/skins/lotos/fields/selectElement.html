@@ -1,0 +1,20 @@
+{% import "forms.html" as forms %}
+
+<script type="text/javascript">
+$(function(){
+  $("#{{id}}").multiselect({
+     multiple: false,
+     selectedText: "# из # выбрано",
+     selectedList: 3,
+     classes: "{{class}}",
+     minWidth: '450'
+  });
+});
+
+
+</script>
+
+<fieldset>
+  {{ forms.label(id, label, validation.req) }}
+  {{ forms.select(id,  name, items, value, false, class, 1, error) }}
+</fieldset>

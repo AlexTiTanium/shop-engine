@@ -1,0 +1,30 @@
+<div class="form-row">
+ {% if error %}
+  <div class="ui-widget">
+    <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;"> 
+       <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span> 
+       <strong>Внимание:</strong> {{ error }}</p>
+    </div>
+  </div>
+ {% endif %}
+ 
+  <div class="label">{{label}}{% if validation.req==true %}<font color="red">*</font> {%endif%}  </div>
+  <div class="input-container">
+    
+  <select name="{{ name }}" id="{{ 'ID'~name }}" size="1">
+    {% for key,val in items %}
+      {% if val.optgroup and val.label %}
+        <optgroup label="{{val.label}}">
+        {% for k,v in val.optgroup %}
+          {% if value and k==value %}{% set selected = 'selected="selected"' %}{% else %}{% set selected = '' %}{% endif %}
+          <option value="{{ k }}" {{ selected }}>{{ v }}</option>
+        {% endfor %}  
+        </optgroup>   
+      {% else %}
+        {% if value and key==value %}{% set selected = 'selected="selected"' %}{% else %}{% set selected = '' %}{% endif %}
+        <option value="{{ key }}" {{ selected }}>{{ val }}</option>
+      {% endif %}
+    {% endfor %}  
+  </select>
+  </div>
+</div>

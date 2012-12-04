@@ -1,0 +1,81 @@
+/**--------------------- icons ---------------------------------------*/
+
+.ux-icon-system {
+  background-image: url("../icons/system-icon.png");
+}
+
+.ux-icon-shutdown {
+  background-image: url("../icons/shutdown-icon.png");
+}
+
+.ux-icon-application {
+  background-image: url("../icons/application-icon.png");
+}
+
+.ux-icon-journal {
+  background-image: url("../icons/journal-icon.png");
+}
+
+.ux-icon-system-users {
+  background-image: url("../icons/system-users.png");
+}
+
+.ux-icon-add-user {
+  background-image: url("../icons/user_add.png");
+}
+
+.ux-icon-add {
+  background-image: url("../icons/add.png");
+}
+
+.ux-icon-delete {
+  background-image: url("../icons/delete.png");
+}
+
+.ux-icon-trash {
+  background-image: url("../icons/emptytrash.png");
+}
+
+.ux-icon-user-delete {
+  background-image: url("../icons/user_delete.png");
+}
+
+.ux-icon-basket {
+  background-image: url("../icons/basket.png");
+}
+
+.ux-icon-cart {
+  background-image: url("../icons/cart.png");
+}
+
+.ux-icon-box {
+  background-image: url("../icons/cart.png");
+}
+
+.ux-icon-package {
+  background-image: url("../icons/package.png");
+}
+
+.ux-icon-package-link {
+  background-image: url("../icons/package_link.png");
+}
+
+.ux-icon-package-add {
+  background-image: url("../icons/package_add.png");
+}
+
+.ux-icon-folder-add {
+  background-image: url("../icons/folder_add.png");
+}
+
+.ux-icon-copy {
+  background-image: url("../icons/copy.png");
+}
+
+.ux-icon-gear {
+  background-image: url("../icons/gear.png");
+}
+
+.ux-icon-save {
+  background-image: url("../icons/save.png");
+}

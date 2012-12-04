@@ -1,0 +1,16 @@
+{% include "errorPlaceHolder.html" %}
+<tr><td>{{label}}{% if validation.req==true %} <font color="red">*</font>{%endif%}:</td></tr>
+  <tr>
+    <td>
+    {% if validation.minlength %} 
+      {% set minlengthField = 'minlength="'~validation.minlength~'"' %}
+    {% endif %} 
+    
+    {% if validation.maxlength %} 
+      {% set maxlengthField = 'maxlength="'~validation.maxlength~'"' %}
+    {% endif %}
+    
+    <textarea name="{{name}}" class="{{class}}" style="{{style}}" {{ maxlengthField }} {{ minlengthField }}>{{value}}</textarea>
+
+  </td>
+</tr>

@@ -1,0 +1,24 @@
+<ul>
+
+  {% for root in catalog %}
+
+    <li><a href="{{ url_catalog('/catalog', root.alias) }}">{{ root.name }}</a>
+
+      <div class="drop-down-columns-1 drop-down-menu-content {{ loop.last ? 'menu-right' : '' }}">
+        <div class="tail">&nbsp;</div>
+        <div class="col-1-middle">
+          <ul>
+            {% for child in root.children %}
+              <li>
+                <span>—</span><a href="{{ url_catalog('/catalog', root.alias, child.alias) }}">{{ child.name }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </li>
+
+  {% endfor %}
+</ul>
+
+<div class="clear"></div>

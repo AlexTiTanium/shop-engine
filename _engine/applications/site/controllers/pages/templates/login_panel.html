@@ -1,0 +1,15 @@
+<div id="user-panel-info" class="grid_3">
+  <img class="login-icon" src="{{images}}/login_icon.gif" alt="Войти в личный кабинет" />
+
+  <h1>Вход</h1>
+
+  <h2>В личный кабинет</h2>
+</div>
+
+<div id="user-panel-content" class="grid_10">
+  {{loginForm|raw}}
+</div>
+
+<div id="registration" class="grid_3">
+  {{ forms.action_button("registration_btn", "/users/registration.html", "dark-button", "Зарегистрироватся") }}
+</div>

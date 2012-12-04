@@ -1,0 +1,91 @@
+{% include "errorPlaceHolder.html" %}
+<script type="text/javascript" language="javascript">
+
+function checkIsUniqPrefix(prefix){
+
+  var uniq = false;
+
+  $.ajax({
+    url: "/my_services/AddServiceEvents/checkIfPrefixUniq.json",
+    dataType: 'json',
+    data: {prefix:prefix, preprefix: {{prefix}}},
+    type: 'GET',
+    async: false,
+    cache: false,
+    timeout: 30000,
+    success: function(json){
+      if(json.uniq){ uniq  = true; }
+    },
+    error:  function(){
+      alert('Ошибка при выполнении запроса');
+    }
+  });
+
+  return uniq;
+}
+
+$(document).ready(function() {
+
+    $("#{{ 'addbtnID'~name }}").button({
+      icons: {
+        primary: "ui-icon-plusthick"
+      },
+      text: false
+    });
+
+  $("#{{ 'ID'~name }}").asmSelect({
+    sortable: false,
+    animate: false,
+    addItemTarget: 'top',
+    //debugMode: true, 
+    prefix: {{prefix}}
+  });
+
+  $("#{{ 'addbtnID'~name }}").click(function() {
+  
+    var value = $("#{{ 'addinputID'~name }}").val();
+
+    {# //TODO: Убрать говнокод #}
+    {% if validation.lenght==0 %}
+      if(value.length!=2 && value.length!=3 && value.length!=4){
+        alert('Префикс должен содержать 2,3 или 4 знака');
+    {% else %}
+      if(value.length!={{validation.lenght}}){
+        alert('Префикс должен содержать не меньше {{validation.lenght}} знака');
+    {% endif %}
+      return false;
+    }
+
+    if (!/^([a-z-0-9])+$/i.test(value)) {
+     alert('Поле перефикс должно содержать только английские буквы и цифры');
+     return false;
+    }
+
+    if(!checkIsUniqPrefix(value)){
+      alert('Такой префикс уже зарегистрирован в системе');
+      return false;
+    }
+
+    var $option = $('<option selected="true"></option>').text(value).attr("selected", 'selected');
+
+    $("#{{ 'ID'~name }}").append($option).change();
+    $("#{{ 'addinputID'~name }}").val('');
+
+  });
+
+});
+</script>
+<tr>
+  <th>{{label}}{% if validation.req==true %} <font color="red">*</font>{%endif%}:</th>
+  <td> 
+
+    <input style="width: 50px;" class="" maxlength="4" type="text" id="{{ 'addinputID'~name }}" value="" />
+    <button style="top:-2px;" type="button" id="{{ 'addbtnID'~name }}" href="#">Добавить префикс</button>
+
+    <select id="{{ 'ID'~name }}" name="{{ name }}[]" multiple="multiple" size="10" >
+    {% for key,val in value %}
+      <option value="{{ val }}" selected="selected">{{ val }}</option>
+    {% endfor %}
+    </select>         
+  </td>
+</tr>

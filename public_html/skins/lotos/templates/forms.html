@@ -1,0 +1,238 @@
+<!-- -------------------------------------------------------------------------------------------
+  Enable javaScript validator
+----------------------------------------------------------------------------------------------->
+{% macro js_validator(id, position) %}
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+    $(function () {
+      $("#{{id}}").validationEngine('attach', {promptPosition : "{{ position|default('topRight') }}", scroll: false});
+    });
+  </script>
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Begin form
+----------------------------------------------------------------------------------------------->
+{% macro begin(id, class, method, enctype, action) %}
+<form id="{{id}}" class="{{class}}" method="{{method}}" enctype="{{enctype}}" action="{{action}}">
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  End form
+----------------------------------------------------------------------------------------------->
+{% macro end_form() %}
+</form>
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Add token field
+----------------------------------------------------------------------------------------------->
+{% macro token(token) %}
+  <input name="token" value="{{token}}" type="hidden" />
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Add button
+----------------------------------------------------------------------------------------------->
+{% macro button(id, type, class, text) %}
+  <button id="{{ id }}" type="{{ type }}" name="{{ id }}" value="true" class="{{ class }} button ui-button ui-button-text-only ui-widget ui-corner-all">
+    <span class="ui-button-text">{{ text|default(type) }}</span>
+  </button>
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Add action button it`s have url, and work like link
+----------------------------------------------------------------------------------------------->
+{% macro action_button(id, url, class, text, style) %}
+
+  {% if id %}
+    {% set attrid = 'id="'~id~'"' %}
+  {% endif %}
+
+  <a {{attrid|raw}} style="{{style}}" class="{{class}} button ui-button ui-button-text-only ui-widget ui-corner-all" href="{{url}}">
+    {% if text %}<span class="ui-button-text">{{text}}</span>{% endif %}
+  </a>
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Input field macros
+----------------------------------------------------------------------------------------------->
+{% macro input(id,  name, type, value, class, maxlength, error, readonly, style, title) %}
+
+  {% if value and type!='password' %}
+    {% set valueAttr = 'value="'~value~'"' %}
+  {% endif %}
+
+  {% if readonly %}
+    {% set readonly = 'readonly="readonly"' %}
+  {% endif %}
+
+  {% if error %}<div class="engine-form-element-error"> {% endif %}
+
+  <input id="{{id}}" name="{{name}}" title="{{title}}" {{readonly|raw}} {{ valueAttr|raw }} type="{{type|default('text')}}" style="{{style}}" class="{{class}}" maxlength="{{ maxlength|default(100) }}" />
+
+  {% if error %}<span>{{error}}</span></div> {% endif %}
+
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Input field macros
+----------------------------------------------------------------------------------------------->
+{% macro textarea(id, name, value, rows, class, error, readonly, style, title) %}
+
+  {% if value and type!='password' %}
+    {% set valueAttr = 'value="'~value~'"' %}
+  {% endif %}
+
+  {% if readonly %}
+    {% set readonly = 'readonly="readonly"' %}
+  {% endif %}
+
+  {{ _self.error(error) }}
+
+  <textarea rows="{{rows}}" id="{{id}}" name="{{name}}" title="{{title}}" {{readonly|raw}}  style="{{style}}" class="{{class}}">{{value}}</textarea>
+
+{% endmacro %}
+
+
+<!-- -------------------------------------------------------------------------------------------
+  Select field macros
+----------------------------------------------------------------------------------------------->
+{% macro select(id,  name, items, value, multiple, class, size, error) %}
+
+  {{ _self.error(error) }}
+
+  <select class="{{class}}" name="{{ name }}{{ multiple ? '[]' : '' }}" id="{{ id }}" size="{{size}}" {{ multiple ? 'multiple="multiple"' : '' }}>
+   {% for key,val in items %}
+
+      {% set selected = '' %}
+
+      {% if not multiple and value and key==value %}
+        {% set selected = 'selected="selected"' %}
+      {% endif %}
+
+      {% if multiple and value and key in value %}
+        {% set selected = 'selected="selected"' %}
+      {% endif %}
+
+      <option {{ selected|raw }} value="{{ key }}">{{ val }}</option>
+
+    {% endfor %}
+  </select>
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Radio field macros
+----------------------------------------------------------------------------------------------->
+{% macro radio(id, name, value, label, selected, class, size, error, style) %}
+
+  {% set checked = '' %}
+
+  {% if selected and value==selected %}
+    {% set checked = 'checked="checked"' %}
+  {% endif %}
+
+  <label class="inner-label"><input id="{{id}}" type="radio" class="{{class}}" name="{{ name }}" value="{{ value }}" {{ checked|raw }} />&nbsp;{{ label }}</label>
+
+  {{ _self.error(error) }}
+
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Checkbox field macros
+----------------------------------------------------------------------------------------------->
+{% macro checkbox(id, name, label, value, checked, class, error, style, labelClass) %}
+
+  {% if checked %}
+    {% set checked = 'checked="checked"' %}
+  {% else %}
+    {% set checked = '' %}
+  {% endif %}
+
+  {% if id %}
+    {% set attrid = 'id="'~id~'"' %}
+  {% endif %}
+
+  <label class="inner-label checkbox-radio {{labelClass}}"><input {{attrid|raw}} type="checkbox" class="{{class}}" name="{{ name }}" value="{{value|default('true')}}" {{ checked|raw }} />&nbsp;{{ label }}</label>
+
+  {{ _self.error(error) }}
+
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Divider
+----------------------------------------------------------------------------------------------->
+{% macro divider() %}
+  <hr />
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Captcha field macros
+----------------------------------------------------------------------------------------------->
+{% macro captcha(id, url, title, alt) %}
+
+  <script type="text/javascript" language="javascript">
+    $(function() {
+      $('#captcha_update_{{id}}').live('click', function(){
+        $('#captcha_image_{{id}}').attr('src', "{{url}}" + new Date().getTime()+'.captcha');
+      });
+    });
+  </script>
+
+  <img id="captcha_image_{{id}}" src="{{url}}.captcha" title="{{title}}" alt="{{alt}}" />
+  <a id="captcha_update_{{id}}" href="#updateCaptcha">Обновить каптчу</a>
+
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Label macros
+----------------------------------------------------------------------------------------------->
+{% macro label(id, label, required) %}
+
+  {% if required %}
+    {% set required = '<font color="red">*</font>' %}
+  {% endif %}
+
+  {% if id %}
+    {% set forattr = 'for="'~id~'"' %}
+  {% endif %}
+
+  {% if label %}
+    <label {{forattr|raw}}>{{ label }} {{ required|raw }}:</label>
+  {% endif %}
+
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Print array of errors, errors must be array
+----------------------------------------------------------------------------------------------->
+{% macro errors(errors) %}
+  {% for error in errors %}
+    {{ _self.error(error) }}
+  {% endfor %}
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Print one error, error must be string
+----------------------------------------------------------------------------------------------->
+{% macro error(error) %}
+  {% if error and error is not iterable %}
+    <div class="engine-form-error">{{error}}</div>
+  {% endif %}
+  {% if error and error is iterable %}
+    {{ _self.errors(error) }}
+  {% endif %}
+{% endmacro %}
+
+<!-- -------------------------------------------------------------------------------------------
+  Create progress bar, value must be from 0 to 100
+----------------------------------------------------------------------------------------------->
+{% macro progressbar(id, value, notShowPercent) %}
+<script type="text/javascript">
+$(function() {
+	$('#progressbar-{{id}}').progressbar({
+		value: {{value}}
+	});
+});
+</script>
+<div id="progressbar-{{id}}"></div>{% if not notShowPercent %}<span class="indicator">{{value}}%</span>{% endif %}
+{% endmacro %}

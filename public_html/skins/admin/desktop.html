@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block header %}
+
+{{parent()}}
+
+{{ addCss([
+'extjs/resources/css/ext-all',
+'resources/css/desktop',
+'resources/css/icons'
+]) }}
+
+<script type="text/javascript">
+
+  var ROOT_PATH = '{{ROOT_PATH}}';
+  var IMAGES_PATH = '{{IMAGES}}';
+  var RESOURCES_PATH = '{{RESOURCES_PATH}}';
+  var DESKTOP_PATH = '{{DESKTOP_PATH}}';
+  var TOKEN = '{{TOKEN}}';
+
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+<script type="text/javascript">
+  document.getElementById('loading-message').innerHTML = 'Loading Core API…';
+</script>
+
+{# {{ addJs('extjs/ext-all') }} #}
+
+  {{ addJs('extjs/ext-all-dev') }}
+
+<script type="text/javascript">
+  document.getElementById('loading-message').innerHTML = 'Loading Localization …';
+</script>
+{{ addJs('extjs/locale/ext-lang-ru') }}
+
+<script type="text/javascript">
+  document.getElementById('loading-message').innerHTML = 'Loading Application …';
+</script>
+{{ addJs('desktop/overrides/Ext.app.EventBus') }}
+{{ addJs('desktop/overrides/Ext.form.Panel') }}
+{{ addJs('desktop/lib/CoreApplication') }}
+{{ addJs('desktop/lib/Application') }}
+{{ addJs('desktop/CoreApp') }}
+
+<script type="text/javascript">
+
+  Ext.onReady(function (){
+
+    var animate = Ext.create('Ext.dom.CompositeElement');
+
+    animate.add(Ext.get('loading-mask'));
+    animate.add(Ext.get('loading'));
+
+    Ext.create('Ext.fx.Anim', {
+        target: animate,
+        duration: 1000,
+        from: {
+          opacity: 1
+        },
+        to: {
+           opacity: 0
+        },
+        callback: function(){
+          animate.hide(true);
+        }
+    });
+
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+Documents\Shop\ProductsTypesTree:
+  collection: shop_products_types_tree
+  repositoryClass: 'models\ODM\Repositories\ShopProductsTypesTreeRepository'
+  fields:
+    id:
+      type: id
+      id: true
+    name:
+      type: string
+    index:
+      type: int
+    leaf:
+      type: boolean
+    parentId:
+      type: string
+
+  referenceMany:
+    children:
+     targetDocument: Documents\Shop\ProductsTypesTree
+     cascade: all
+  indexes:
+    parentId:
+      keys:
+        parentId: asc
+      options:
+        safe: true
+    childrens:
+      keys:
+        children: asc
+      options:
+        safe: true

@@ -1,0 +1,45 @@
+<div id="products">
+
+  <div class="product box new">
+    <img src="/filestore/root/Images/img.jpg" alt=""/>
+    <div class="name ellipse">Део-гель для душа энергетизирующий</div>
+    <div class="property">500 мл</div>
+    <div class="price">15.75 грн.</div>
+    <a class="buy" href="/">В корзину</a>
+  </div>
+
+  <div class="product box promotion">
+    <a href="/"><img src="/filestore/root/Images/img.jpg" alt=""/></a>
+    <div class="name ellipse"><a href="/">Део-гель для душа энергетизирующий</a></div>
+    <div class="property">500 мл</div>
+    <div class="price">15.75 грн.</div>
+    <a class="buy" href="/">В корзину</a>
+  </div>
+
+  {% for i in 0..1 %}
+    <div class="product box">
+      <img src="/filestore/root/Images/img.jpg" alt=""/>
+      <div class="name ellipse">Део-гель для душа энергетизирующий</div>
+      <div class="property">500 мл</div>
+      <div class="price">15.75 грн.</div>
+      <a class="buy" href="/">В корзину</a>
+    </div>
+  {% endfor %}
+
+  {% for i in 0..4 %}
+    <div class="product box">
+      <img src="/filestore/root/Images/img.jpg" alt=""/>
+
+      <div class="name ellipse">Део-гель для душа fdfs fsdf sdfd
+        fsdf sdf sdfsd fsdf
+        fd afsdf sdf sdfs
+         sdfadf sdэнергетизирующий</div>
+
+      <div class="property">500 мл</div>
+
+      <div class="price">15.75 грн.</div>
+
+      <a class="buy" href="/">В корзину</a>
+    </div>
+  {% endfor %}
+</div>

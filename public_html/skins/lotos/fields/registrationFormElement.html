@@ -1,0 +1,64 @@
+<script type="text/javascript">
+  // EXECUTE PLUGIN ON DOM READY - START
+  $(function () {
+    $('#{{ submitBtnId }}').formValidator({
+      scope		: '#{{id}}',
+      errorDiv	: '#errorDiv'
+    });
+    {% if savedSuccess %}
+      setTimeout(function(){ $('#saved{{id}}').fadeOut('slow');  },2000); 
+    {%endif%}		
+  });
+  // EXECUTE PLUGIN ON DOM READY - END
+</script>
+
+
+<h1 class="ico_index_t h1_glav">{{title}}:</h1>
+
+<div class="box"><div class="box_t"><div class="box_b">
+
+<form id="{{id}}" method="{{method}}" enctype="{{enctype}}" action="{{action}}">
+
+{% if savedSuccess %}
+<div id="saved{{id}}" class="ui-widget">
+  <div class="ui-state-highlight ui-corner-all" style="margin-bottom: 10px; padding: 0.9pt 0.9em;"> 
+    <p><span class="ui-icon ui-icon-disk" style="float: left; margin-right: 0.3em;"></span>
+    <strong>Выполнено!</strong> {{successMsg}}</p>
+  </div>
+</div>
+{%endif%}
+  
+<input name="token" value="{{token}}" type="hidden">
+<div id="errorDiv" class="error-div"></div>
+
+<table class="reg"><tr>
+  <td class="reg_l">
+    <table class="reg_inp">
+
+      {{ allFields }}
+     
+    </table>
+  </td>   
+  <td class="reg_r">
+    <table>
+      {{placeHolders.registrationComments}}
+    <tr><td>
+      <div style="background-color: #FF8080; padding: 10px; margin-top: 20px;">
+      <b>
+        Специалистами компании «Bill24» обрабатываютсязаявки ТОЛЬКО с подробным описанием сервисов для подключения и непосредственно ссылками на сервисы или сервисы схожей тематики. Прочие заявки рассматриваться не будут, и останутся без ответа. Будьте внимательны при заполнении.
+      </b>  
+      </div>
+    </td></tr>
+    </table>
+  </td>
+</table>  
+
+{{placeHolders.userAgreement}}
+
+
+<div class="reg_sub"><input id="{{ submitBtnId }}" type="image" onmouseout="this.src='{{imagesPath}}/reg_sub.png'" onmouseover="this.src='{{imagesPath}}/reg_sub_h.png'" src="{{imagesPath}}/reg_sub.png"></div>
+
+{#<div class="reg_sub"><b>Регистрация временно закрыта</b></div>#}
+
+</form>
+</div></div></div>

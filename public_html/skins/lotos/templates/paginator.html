@@ -1,0 +1,24 @@
+{% if paginatorView.haveToPaginate %}
+<div class="pagination">
+
+  <div class="grid_3 alpha">
+    {% if paginatorView.hasPreviousPage %}
+      {{ forms.action_button(false, "?page="~paginatorView.getPreviousPage, "grey-arrow-button arrow-to-left float-left", "Предыдущая")}}
+    {% endif %}
+    &nbsp;
+  </div>
+
+  <div class="grid_5 centered">
+    {{paginatorView.getPages|raw}}
+  </div>
+
+  <div class="grid_3 omega float-right">
+    {% if paginatorView.hasNextPage %}
+      {{ forms.action_button(false, "?page="~paginatorView.getNextPage, "grey-arrow-button arrow-to-right", "Следующая")}}
+    {% endif %}
+    &nbsp;
+  </div>
+
+  <div class="clear"></div>
+</div>
+{% endif %}

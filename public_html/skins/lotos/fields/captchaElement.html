@@ -1,0 +1,10 @@
+{% import "forms.html" as forms %}
+
+<fieldset>
+{{ forms.captcha(id, url, "Если вы плохо различаете цифры обновите изображение", "captcha" ) }}
+<div class="clear"></div>
+<br />
+{{ forms.label(id, label, validation.req) }}
+{{ forms.input(id, name, 'text', value, class~" engine-form-input", size, error, readonly, style ) }}
+
+</fieldset>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  {% block meta %}
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="keywords" content="{% block keywords %}{{keywords|e}}{% endblock %}"/>
+  <meta name="description" content="{% block description %}{{description|e}}{% endblock %}"/>
+  {% endblock %}
+  <title>{% block title %}{{title|default(siteName)}}{% endblock %}</title>
+  {% block includes %}
+
+    {% autoescape false %}
+      {{css}}
+      {{js}}
+      {% if messages %}{% include "messages.html" %}{% endif %}
+    {% endautoescape %}
+
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+  {% endblock %}
+</head>
+<body id="body">
+
+<div id="header">
+  {% block header %}{% endblock %}
+</div>
+
+<div id="logo">
+  {% block logo %}{% endblock %}
+</div>
+
+<div id="menu">
+  {% block menu %}{% endblock %}
+</div>
+
+<div id="main">
+
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+
+</div>
+
+<div id="footer">
+  {% block footer %}{% endblock %}
+</div>
+
+</body>
+</html>

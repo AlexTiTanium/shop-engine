@@ -1,0 +1,51 @@
+stringKeyReq:
+  type: string
+  validators:
+    req: true
+    min: 3
+    max: 15
+
+stringNotReq:
+  type: string
+  validators:
+    min: 3
+    max: 15
+
+integerReq:
+  type: integer
+  validators:
+    req: true
+    min: 3
+    max: 15
+
+integerNoReq:
+  type: integer
+  validators:
+   min: 3
+   max: 15
+
+floatReq:
+  type: float
+  validators:
+    req: true
+    min: 3
+    max: 15
+
+floatNoReq:
+   type: float
+   validators:
+     min: 3
+     max: 15
+
+booleanReq:
+  type: boolean
+  validators:
+    req: true
+
+booleanNotReq:
+  type: boolean
+
+email:
+  type: string
+  validators:
+    email: true

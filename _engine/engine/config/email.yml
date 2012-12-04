@@ -1,0 +1,22 @@
+Emails:
+
+  default: 'support@lotos.ks.ua'
+
+Config:
+
+  # Setting the Charset
+  emailCharset: 'utf-8';
+
+  # Transport mail, sendmail, smtp
+  transport: 'mail';
+
+SmtpConfig:
+
+  smtpHost: '';
+  smtpPort: 25;
+  smtpLogin: '';
+  smtpPassword: '';
+
+SendMail:
+
+  sendMailPath: '/usr/sbin/sendmail -bs'

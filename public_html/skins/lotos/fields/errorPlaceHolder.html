@@ -1,0 +1,13 @@
+{% if error %}
+<tr>
+ <td colspan="2" style="width: 100%">
+ <br>
+  <div class="ui-widget">
+    <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;"> 
+       <span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span> 
+       <strong>Внимание:</strong> {{ error }}
+    </div>
+  </div>
+ </td>
+</tr>
+{% endif %}

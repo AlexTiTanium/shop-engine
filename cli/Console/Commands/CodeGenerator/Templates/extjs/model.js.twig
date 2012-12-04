@@ -1,0 +1,10 @@
+Ext.define('{{ appName|ucfirst }}.model.{{ modelName|ucfirst }}Model', {
+  extend:'Ext.data.Model',
+  fields:[
+    {name:'id', type:'string' },
+    {name:'',   type:'string' }
+  ],
+  validations:[
+    {type:'length',  field:'', min:4 }
+  ]
+});

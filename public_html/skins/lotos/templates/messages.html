@@ -1,0 +1,6 @@
+<script type="text/javascript">
+  {% for message in messages %}
+    addMessage('{{message.title}}','{{message.text}}', '{{message.type}}');
+  {% endfor %}
+</script>
+

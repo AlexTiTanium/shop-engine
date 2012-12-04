@@ -1,0 +1,10 @@
+{% import "forms.html" as forms %}
+
+<fieldset>
+
+{% if type != 'hidden' %}
+  {{ forms.label(id, label, validation.req) }}
+{% endif %}
+
+{{ forms.input(id, name, type, value, class, size, error, readonly, style ) }}
+</fieldset>

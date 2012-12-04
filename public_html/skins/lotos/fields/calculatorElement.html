@@ -1,0 +1,46 @@
+{% import "forms.html" as forms %}
+
+<script type="text/javascript">
+  $(function () {
+
+    $("#{{id~'-price'}}").change(function(){
+       $(this).formatNumber({format:"#,###.00", locale:"ru", nanForceZero: true});
+    });
+
+    $.videoLeadCalculator({
+      percent: '{{percent}}',
+      inputPrice: $("#{{id~'-price'}}"),
+      inputCount: $("#{{id~'-count'}}"),
+      total: $("#{{id~'-total'}}"),
+      forOneUser: $("#{{id~'-to-executor'}}"),
+      maxTotal: 10000000,
+      minPrice: '{{minPrice}}'
+    });
+
+  });
+
+</script>
+
+<fieldset>
+  {{ forms.error(error) }}
+  {{ forms.label(id, label, validation.req) }}
+  <div class="calculator-layout">
+    <div class="calculator-price">
+      <span>Цена (руб.):</span>
+      {{ forms.input(id~'-price', name~"[price]", type, value.price, class.price~' engine-form-input', 6) }}
+    </div>
+    <div class="calculator-x">X</div>
+    <div class="calculator-count">
+      <span>Количество просмотров:</span>
+      {{ forms.input(id~'-count', name~"[count]", type, value.count, class.count~' engine-form-input', 7) }}
+    </div>
+    <div class="calculator-equals">=</div>
+
+    <div class="calculator-result">
+      <div class="calculator-total"><span id="{{id~'-total'}}">0.00</span> руб.</div>
+      <div class="calculator-to-executor"><span id="{{id~'-to-executor'}}">0.00</span> руб. к оплате исполнителю</div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+</fieldset>

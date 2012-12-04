@@ -1,0 +1,20 @@
+{% import "forms.html" as forms %}
+
+{{ forms.js_validator(id, savedSuccess) }}
+
+{{ forms.begin(id, class, method, enctype, action) }}
+
+  {% if savedSuccess %}
+    {{successMsg}}
+  {% endif %}
+
+  {{ forms.token(token) }}
+
+  {# {{ forms.errors(errors) }} #}
+  {{ forms.error(error) }}
+
+  {{ allFields|raw }}
+
+  {{ forms.button(submitBtnId, 'submit', 'red-button', submitBtnName) }}
+
+{{ forms.end_form() }}

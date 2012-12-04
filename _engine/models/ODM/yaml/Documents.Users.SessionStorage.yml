@@ -1,0 +1,38 @@
+Documents\Users\SessionStorage:
+  collection: user_sessions_storage
+  fields:
+    id:
+      type: id
+      id: true
+    sid:
+      type: string
+      unique:
+        order: desc
+    user_id:
+      type: string
+    ip:
+      type: string
+    now:
+      type: string
+    remember_me:
+      type: boolean
+    exp_session:
+      type: int
+    exp_online:
+      type: int
+  referenceOne:
+    user:
+      targetDocument: Documents\User
+  indexes:
+    user_id:
+      keys:
+        user_id: desc
+      options:
+        unique: true
+        safe: true
+    sid:
+      keys:
+        sid: desc
+      options:
+        unique: true
+        safe: true

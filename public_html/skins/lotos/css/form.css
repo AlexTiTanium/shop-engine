@@ -1,0 +1,152 @@
+/**
+    --------------------   Base --------------------------------------------------
+**/
+
+.form label {
+  display: block;
+  font-size: 11px;
+  font-weight: normal;
+  color: #787878;
+}
+
+.form .inner-label {
+  display: inline-block !important;
+  width: 145px;
+  color: #3f3f3f;
+  font-size: 12px;
+}
+
+/**
+    --------------------   Error --------------------------------------------------
+**/
+.engine-form-error { /**  Text error **/
+  font-size: 11px;
+  color: #B51E22;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form  .engine-form-element-error {
+  background-color: #b21e22;
+  -webkit-border-radius: 005px;
+  -moz-border-radius: 005px;
+  -o-border-radius: 005px;
+  -ms-border-radius: 005px;
+  border-radius: 005px;
+  font-size: 11px;
+  color: white;
+  padding: 1px;
+  width: 95%;
+  padding-left: 5px;
+}
+
+.form  .engine-form-element-error span {
+  padding-left: 5px;
+  display: block;
+}
+
+.form .engine-form-element-error input {
+  border: 1px solid #84181c;
+  width: 96%
+}
+
+.form  .engine-form-element-error .engine-form-input:focus {
+  border: 1px solid #84181c;
+
+  box-shadow: 0 0 0 0;
+  -webkit-box-shadow: 0 0 0 0;
+  -moz-box-shadow: 0 0 0 0;
+}
+
+/**
+    --------------------   Input Text, textatea --------------------------------------------------
+**/
+
+.form .engine-form-input, .form .engine-form-textarea {
+  width: 93%;
+  background-color: #e2e2e2;
+  border: 1px solid #c2c2c2;
+  color: #343434;
+  font-size: 13px;
+  padding: 0 7px;
+  height: 35px;
+  line-height: 35px;
+  outline: medium none;
+
+  -webkit-border-radius: 002px;
+  -moz-border-radius: 002px;
+  border-radius: 002px;
+
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+
+  box-shadow: 0 0 0 0 #e2e2e2;
+  -webkit-box-shadow: 0 0 0 0 #e2e2e2;
+  -moz-box-shadow: 0 0 0 0 #e2e2e2;
+  margin: 2px;
+}
+
+.form .engine-form-input:focus, .form .engine-form-textarea:focus  {
+  background-color: #f6f5f5;
+  border: 1px solid #c2c2c2;
+
+  box-shadow: 0 0 0 2px #e2e2e2;
+  -webkit-box-shadow: 0 0 0 2px #e2e2e2;
+  -moz-box-shadow: 0 0 0 2px #e2e2e2;
+}
+
+.form .engine-form-textarea {
+  height: auto !important;
+  margin-left: 5px;
+  line-height: 20px;
+}
+
+/**
+    --------------------   checkbox input --------------------------------------------------
+**/
+.form  .checkbox-radio {
+  width: 500px;
+}
+
+.form .engine-form-groupCheckbox {
+  margin-left: 0;
+}
+
+/**
+    --------------------  group checkbox input --------------------------------------------------
+**/
+.form  .group-checkbox {
+  width: 197px !important;
+  margin-top: 14px;
+  cursor: pointer;
+}
+
+/**
+    --------------------   Divider input --------------------------------------------------
+**/
+.form  hr {
+  width: 100%;
+  border-color: #e2e2e2;
+  margin: 15px 0;
+  padding-left: 0;
+}
+
+/**
+    --------------------   Select, MultiSelect input --------------------------------------------------
+**/
+.form button.engine-form-multiSelect, .form button.engine-form-select  {
+  margin-top: 14px;
+  cursor: pointer;
+}
+.form button.engine-form-multiSelect span, .form button.engine-form-select span {
+  font-weight: normal;
+}
+
+.form button.engine-form-multiSelect li, .form button.engine-form-select li {
+  margin-left: 2px !important;
+}
+
+.form button.engine-form-multiSelect, .form button.engine-form-select  {
+  padding: 7px 0 7px 4px !important;
+}

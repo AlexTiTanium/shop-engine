@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% import "forms.html" as forms %}
+
+{% block header %}
+{{ parent() }}
+
+  {% if not isLogged %}
+    <script type="text/javascript">
+      $(function () {
+        $('#login-login').watermark('Логин:');
+        $('#login-password').watermark('Пароль:');
+      });
+    </script>
+  {% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+<div id="user-panel">
+  <div id="user-panel-container" class="container_16">
+    {% if isLogged %}
+      {% include "user_panel.html" %}
+    {% else %}
+      {% include "login_panel.html" %}
+    {% endif %}
+  </div>
+</div>
+
+<div id="page-content">
+
+  <div id="page-container" class="container_16">
+
+    <div class="shadow">
+
+      <div id="page-top" class="page-panel ui-corner-top grid_16">
+
+        <div class="grid_3 alpha">
+          {% block page_left_btn %}&nbsp;{% endblock %}
+        </div>
+
+        <h1 class="grid_10">{% block page_title %}{% endblock %}</h1>
+
+        <div class="grid_3 omega right-align">
+          {% block page_right_btn %}&nbsp;{% endblock %}
+        </div>
+
+      </div>
+
+      <div class="grid_16 content">
+        <div class="wrapper">
+          {% block page_text %}Нет текста странички{% endblock %}
+        </div>
+      </div>
+
+      <div id="page-bottom" class="page-panel ui-corner-bottom grid_16">
+
+        <div class="grid_3 alpha">
+          {{ block('page_left_btn')|default('&nbsp;')|raw }}
+        </div>
+
+        <div class="grid_10">&nbsp;</div>
+
+        <div class="grid_3 omega right-align">
+          {{ block('page_right_btn')|default('&nbsp;')|raw }}
+        </div>
+
+
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

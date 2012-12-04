@@ -1,0 +1,296 @@
+/**
+  --------------------------- Cart ------------------------------------------------------------
+**/
+#cart {
+  margin-top: 71px;
+}
+
+/**
+  --------------------------- Shop ------------------------------------------------------------
+**/
+
+#shop {
+  margin-top: 4px;
+}
+
+#shop .wrap {
+  margin: 0 0 0 15px;
+}
+
+
+/**
+  --------------------------- breadcrumb ------------------------------------------------------------
+**/
+
+#breadcrumb {
+  float: left;
+
+}
+
+#breadcrumb a {
+  color: #888888;
+  font-size: 13px;
+  font-style: italic;
+  text-decoration: none;
+}
+
+#breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+#breadcrumb h1 {
+  color: #2a2a2a;
+  font-size: 22px;
+  margin-top: 0;
+}
+
+/**
+  --------------------------- Sort select ------------------------------------------------------------
+**/
+
+#sort {
+  color: #434343;
+  font-size: 13px;
+  text-align: right;
+  margin-top: 11px;
+  float: right;
+}
+
+#sort .text {
+  float: left;
+  margin-top: 9px;
+  margin-right: 12px;
+}
+
+#sort select {
+  float: right;
+  margin-top: 7px;
+  padding-left: 5px;
+  background-color: #f8f8f8;
+  border: 1px solid #c1c1c2;
+  color: #232323;
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+/**
+  --------------------------- Left menu ------------------------------------------------------------
+**/
+
+#shop_left_menu {
+  font-size: 16px;
+  padding-left: 13px;
+}
+
+#shop_left_menu ul {
+  list-style: none;
+  margin: 0;
+}
+
+#shop_left_menu ul li {
+  border-bottom: 1px #909090 dotted;
+  padding: 5px 0;
+}
+
+#shop_left_menu ul li a {
+  color: #b93939;
+  text-decoration: none;
+}
+
+#shop_left_menu ul li a:hover {
+  color: #b93939;
+  text-decoration: underline;
+}
+
+#shop_left_menu ul li span {
+
+}
+
+#shop_left_menu .root {
+
+}
+
+#shop_left_menu .child {
+  margin-top: 5px;
+  font-size: 14px;
+
+}
+
+#shop_left_menu span.icon-arrow {
+  background: url("../images/left-menu-arrow.png");
+  width: 9px;
+  height: 6px;
+  display: block;
+  float: left;
+  margin-left: 6px;
+  margin-top: 9px;
+}
+
+#shop_left_menu span.text {
+  display: block;
+  float: left;
+}
+
+#shop_left_menu span.hover:hover {
+  text-decoration: underline;
+}
+
+#shop_left_menu .child li {
+  padding-left: 16px;
+
+}
+
+#shop_left_menu .child {
+  border-bottom: none;
+  border-top: 1px #909090 dotted;
+  margin-top: 5px;
+}
+
+#shop_left_menu .no-border {
+  border: none;
+}
+
+/**
+  --------------------------- Products ------------------------------------------------------------
+**/
+
+#products {
+
+}
+
+#products .product {
+  float: left;
+  text-align: center;
+  width: 173px;
+
+}
+
+#products .product img {
+  margin-top: 12px;
+
+}
+
+#products .name {
+  font-size: 14px;
+  color: #333333;
+  margin-top: 9px;
+  height: 37px;
+  overflow: hidden;
+}
+
+#products .name a {
+  font-size: 14px;
+  color: #333333;
+  text-decoration: none;
+}
+
+#products .name a {
+  font-size: 14px;
+  color: #333333;
+  text-decoration: none;
+}
+
+#products .name a:hover {
+  text-decoration: underline;
+}
+
+#products .property {
+  color: #878787;
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+#products .price {
+  color: #272727;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px dotted #c5c5c5;
+  border-top: 1px #c5c5c5 dotted;
+  padding: 3px 0;
+  margin-top: 23px;
+}
+
+#products a.buy:hover {
+  text-decoration: none;
+}
+
+#products a.buy {
+  color: #b93939;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: underline;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 2px;
+}
+
+
+#products .new {
+  background: url("../images/new.png") #ffffff no-repeat;
+}
+
+#products .promotion {
+  background: url("../images/promotion.png") #ffffff no-repeat;
+}
+
+/**
+  --------------------------- Filters ------------------------------------------------------------
+**/
+
+#filters {
+  margin-left: 13px;
+
+}
+
+#filters h1 {
+  font-size: 17px;
+  color: #000000;
+}
+
+#filters  .filter-name {
+  color: #232323;
+  font-size: 16px;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+#filters .current-filters {
+  padding-left: 12px;
+  margin-left: 0;
+  margin-bottom: 9px;
+  margin-right: 10px;
+
+}
+/** preload **/
+#filters { background: url(../images/remove_hover.png) no-repeat -9999px -9999px;
+  margin-left: 13px;
+}
+#filters .current-filters a:hover {
+  background: url("../images/remove_hover.png") no-repeat scroll 0 6px transparent;
+}
+#filters .current-filters a {
+  color: #b93939;
+  font-size: 14px;
+  display: block;
+  background: url("../images/remove_default.png") no-repeat scroll 0 6px transparent;
+  padding: 2px 17px;
+}
+
+#filters .current-filters div {
+  font-size: 14px;
+  padding-left: 17px;
+  padding-top: 3px;
+  color: #232323;
+}
+
+#filters .truncate-filters {
+  color: #b93939;
+  font-size: 14px;
+}
+
+#filters .checkbox-radio {
+  display: block;
+  padding: 4px 7px;
+
+}

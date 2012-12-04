@@ -1,0 +1,59 @@
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+$("#inputId_{{name}}").autocomplete({
+  source: function(request, response) {
+    $.ajax({
+       url: "http://ws.geonames.org/searchJSON",
+       dataType: "jsonp",
+       data: {
+        // country:'RU',
+         lang: 'ru',
+         featureClass: "P",
+         style: "SHORT",
+		 maxRows: 12,
+		 name_startsWith: request.term
+       },
+       success: function(data) {
+         response($.map(data.geonames, function(item) {
+		   return {
+		     label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+	         value: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName
+		   }
+		 }))
+       }
+    })
+  },
+  minLength: 2,
+  select: function(event, ui) {
+    //log(ui.item ? ("Selected: " + ui.item.label) : "Nothing selected, input was " + this.value);
+  },
+  open: function() {
+    $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+  },
+  close: function() {
+    $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+  }
+});
+
+});
+</script>
+{% include "errorPlaceHolder.html" %}
+<tr>
+   <th>{{label}}{% if validation.req==true %} <font color="red">*</font>{%endif%}:</th>
+   <td>  
+    {% if value and type!='password' %}
+      {% set valueField = 'value="'~value~'"' %}
+    {% endif %}
+    
+    {% if validation.minlength %} 
+      {% set minlengthField = 'minlength="'~validation.minlength~'"' %}
+    {% endif %} 
+    
+    {% if validation.maxlength %} 
+      {% set maxlengthField = 'maxlength="'~validation.maxlength~'"' %}
+    {% endif %}
+    
+    <input id="inputId_{{name}}" rel="{{rel}}" name="{{name}}" {{ valueField }} type="{{type|default('text')}}" style="{{style}}" class="{{class}}" {{ maxlengthField }} {{ minlengthField }} />
+
+   </td>
+</tr>

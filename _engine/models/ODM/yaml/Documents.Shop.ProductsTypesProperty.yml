@@ -1,0 +1,28 @@
+Documents\Shop\ProductsTypesProperty:
+  collection: shop_products_types_properties
+  repositoryClass: 'models\ODM\Repositories\ShopProductsTypesPropertyRepository'
+  fields:
+    id:
+      type: id
+      id: true
+    nodeId:
+      type: string
+    name:
+      type: string
+    alias:
+      type: string
+      index: true
+      unique: true
+    type:
+      type: string
+    index:
+      type: int
+    attribute:
+      type: hash
+
+  indexes:
+    nodeId:
+      keys:
+        nodeId: asc
+      options:
+        safe: true
