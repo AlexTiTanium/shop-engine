@@ -1,0 +1,72 @@
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+var cache = { };
+
+function log(message) {
+  $("<div/>").text(message).prependTo("#log");
+  $("#log").attr("scrollTop", 0);
+}
+
+
+$("#inputId_{{name}}").autocomplete({
+  source: function(request, response) {
+    if (cache.term == request.term && cache.content) {
+      response(cache.content);
+      return;
+    }
+    if (new RegExp(cache.term).test(request.term) && cache.content && cache.content.length < 13) {
+      response($.ui.autocomplete.filter(cache.content, request.term));
+      return;
+    }
+    $.ajax({
+      url: "{{url}}",
+      dataType: "json",
+      data: request,
+      success: function(data) {
+        cache.term = request.term;
+        cache.content = data;
+        response(data);
+      }
+    });
+  },
+  minLength: 3,
+    select: function(event, ui) {
+      //log(ui.item ? ("Selected: " + ui.item.value + " aka " + ui.item.id) : "Nothing selected, input was " + this.value);
+    }
+}).data("autocomplete")._renderItem = function( ul, item ) {
+			return $( "<li></li>" )
+				.data( "item.autocomplete", item )
+				.append( "<a>" + item.label + "<br>" + item.desc + "</a>" )
+				.appendTo( ul );
+		};
+
+});
+</script>
+<div class="form-row">
+ {% if error %}
+  <div class="ui-widget">
+    <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;"> 
+       <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span> 
+       <strong>Внимание:</strong> {{ error }}</p>
+    </div>
+  </div>
+ {% endif %}
+ 
+  <div class="label">{{label}}{% if validation.req==true %}<font color="red">*</font> {%endif%}  </div>
+  <div class="input-container">
+  
+    {% if value and type!='password' %}
+      {% set valueField = 'value="'~value~'"' %}
+    {% endif %}
+    
+    {% if validation.minlength %} 
+      {% set minlengthField = 'minlength="'~validation.minlength~'"' %}
+    {% endif %} 
+    
+    {% if validation.maxlength %} 
+      {% set maxlengthField = 'maxlength="'~validation.maxlength~'"' %}
+    {% endif %}
+    
+    <input id="inputId_{{name}}" rel="{{rel}}" name="{{name}}" {{ valueField }} type="{{type|default('text')}}" style="{{style}}" class="{{class}}" {{ maxlengthField }} {{ minlengthField }} />
+  </div>
+</div>

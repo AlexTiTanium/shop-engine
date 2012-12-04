@@ -1,0 +1,44 @@
+catalog:
+  patterns: '/catalog/{:path}.{:type}'
+
+  params:
+    path: '(.*)'
+    type: '(html|json)'
+
+  values:
+    application: 'site'
+    controller: 'shop'
+    action: 'catalog'
+
+admin:
+  attach: '/admin'
+  extend: 'default'
+  values:
+    application: 'admin'
+    controller: 'home'
+    type: 'json'
+
+default:
+  patterns:
+    - '/{:controller}/{:action}/{:event}-{:id}'
+    - '/{:controller}/{:action}/{:event}-{:id}.{:type}'
+    - '/{:controller}/{:action}/{:event}.{:type}'
+    - '/{:controller}/{:action}/{:event}'
+    - '/{:controller}/{:action}.{:type}'
+    - '/{:controller}/{:action}'
+    - '/{:controller}.{:type}'
+    - '/{:controller}'
+    - '(/?)'
+
+
+  params:
+    controller: '([a-zA-Z0-9-]+)'
+    action: '([a-zA-Z0-9-]+)'
+    event: '([a-zA-Z0-9-]+)'
+    id: '([a-zA-Z0-9-]+)'
+    type: '(html|json)'
+
+  values:
+    application: 'site'
+    controller: 'home'
+    type: 'html'

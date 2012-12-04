@@ -1,0 +1,43 @@
+<script type="text/javascript" language="javascript">
+
+$(document).ready(function(){
+
+$('#IdButton{{name}}').ImagesUploader({
+ 'action':'{{uploadDispatcher}}',
+ 'name':'{{name}}',
+ 'uploadAnimation':'#uploadAnimationFor_{{name}}',
+ 'listImages':'#listFiles{{name}}',
+ 'inputs':'#inputs{{name}}',
+ 'maxFiles':'{{maxFiles|default(3)}}',
+ 'deleteDispatcher':'{{deleteDispatcher}}' 
+});
+
+{% if value %}
+  $.fn.ImagesUploader.setData('IdButton{{name}}', {{value}}); 
+{% endif %}
+
+});
+
+</script>
+
+<div class="form-row">
+ {% if error %}
+  <div class="ui-widget">
+    <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;"> 
+       <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span> 
+       <strong>Внимание:</strong> {{ error }}</p>
+    </div>
+  </div>
+ {% endif %}
+ 
+  <div class="label">{{label}}{% if validation.req==true %}<font color="red">*</font> {%endif%}  </div>
+  <div class="input-container">
+  
+    <div id="IdButton{{name}}" class="button" style="width:180px;">Загрузить</div>
+    <div style="display:none;" id="uploadAnimationFor_{{name}}"><img alt="" width="180" height="15" src="{{uploadAnimation}}" /></div>
+    <div style="clear: both;"><br /></div>
+    <div id="inputs{{name}}"></div>
+    
+  </div>
+  <div id="listFiles{{name}}" style="width: 100%; overflow: auto;"></div> 
+</div>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="bootstrap.php">
+  <testsuites>
+
+    <!--
+    <testsuite name="Core data test">
+      <file>core/data/DataValidatorData1.php</file>
+      <file>core/data/DataValidatorData2.php</file>
+    </testsuite>
+    -->
+
+    <testsuite name="Core filesystem test">
+      <file>core/filesystem/FileSystemLocalTest.php</file>
+    </testsuite>
+
+  </testsuites>
+</phpunit>

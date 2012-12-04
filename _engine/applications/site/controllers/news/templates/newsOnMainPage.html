@@ -1,0 +1,21 @@
+<div id="lastNews" class="borderRadius">
+  <h1>Последние новости</h1>
+
+  {% for item in news %}
+  <div class="shortNews">
+    <h2>{{item.date|rusMonsFullDate}}</h2>
+
+    <h3>{{item.name}}</h3>
+
+    {{item.text|maxWords(40)}}<a href="/news-{{item.id}}.html">→</a>
+
+  </div>
+  {% else %}
+    <center>Новостей нет</center>
+  {% endfor %}
+
+  <br/>
+  {% if news %}
+  <a id="allNews" href="/news/">Все новости →</a>
+  {% endif %}
+</div>

@@ -1,0 +1,16 @@
+<div class="content">
+  <h1>Новости</h1>
+  {% for news in items %}
+    <div class="news">
+      <div class="newsDate">{{news.date|rusMonsFullDate}}</div>
+      <h3>{{news.name}}</h3>
+      {{news.text|maxWords(100)}}
+      <br /><br />
+      <a class="readMore" href="/news-{{news.id}}.html">Подробно →</a>
+    </div>
+  {% else %}
+    <p><center>Новостей пока нет</center></p>
+  {% endfor %}
+
+  {% include "paginator.html" %}
+</div>

@@ -1,0 +1,34 @@
+Documents\Admin:
+  collection: admins
+  repositoryClass: 'models\ODM\Repositories\AdminRepository'
+  fields:
+    id:
+      type: id
+      id: true
+    date:
+      type: date
+    login:
+      type: string
+    password:
+      type: string
+    email:
+      type: string
+    enable:
+      type: boolean
+    forgot_password_hash:
+      type: string
+    forgot_password_date:
+      type: date
+    exp_online:
+      type: int
+    activationHash:
+      type: string
+    isActivated:
+      type: boolean
+  indexes:
+    login:
+      keys:
+        login: desc
+      options:
+        unique: true
+        safe: true

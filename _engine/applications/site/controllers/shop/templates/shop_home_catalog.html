@@ -1,0 +1,28 @@
+{% extends _extend_shop_home_catalog %}
+
+{% block shop_catalog %}
+<div id="home-catalog" class="yui3-g content wrap">
+
+  {% for root in catalog %}
+
+    <div class="yui3-u-1-3">
+      <h1><a href="{{ url_catalog('catalog', root.alias) }}">{{ root.name }}</a></h1>
+      <ul>
+
+        {% for child in root.children %}
+          <li><a href="{{ url_catalog('catalog', root.alias, child.alias) }}">{{ child.name }}</a></li>
+        {% endfor %}
+
+      </ul>
+      <a href="{{ url_catalog('catalog', root.alias) }}">Показать все категории</a>
+    </div>
+
+    {%  if (loop.index % 3) == 0 %}
+      {# no jumping effect #}
+      <div class="yui3-u-1"><br /></div>
+    {% endif %}
+
+  {% endfor %}
+
+</div>
+{% endblock %}

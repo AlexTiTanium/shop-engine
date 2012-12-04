@@ -1,0 +1,18 @@
+{% import "forms.html" as forms %}
+
+<div class="error grid_3 alpha">
+  {{ forms.error(error) }}&nbsp;
+</div>
+
+<div class="fields grid_7 omega">
+{{ forms.begin(id, class, method, enctype, action) }}
+
+  {{ forms.js_validator(id, 'bottomRight') }}
+
+  {{ forms.token(token) }}
+  {{ allFields|raw }}
+
+  {{ forms.button(submitBtnId, 'submit', 'red-button red-32px-height', 'ВОЙТИ') }}
+
+{{ forms.end_form() }}
+</div>

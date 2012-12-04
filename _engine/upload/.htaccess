@@ -1,0 +1,5 @@
+AddHandler cgi-script .php .pl .jsp .asp .sh .cgi
+Options -ExecCGI
+php_flag engine off
+RemoveHandler .php
+RemoveType .php

@@ -1,0 +1,25 @@
+Documents\Shop\Catalog:
+  collection: shop_catalog
+  repositoryClass: 'models\ODM\Repositories\ShopCatalogRepository'
+  fields:
+    id:
+      type: id
+      id: true
+    name:
+      type: string
+    alias:
+      type: string
+      index: true
+      unique: true
+    index:
+      type: int
+    leaf:
+      type: boolean
+    parentId:
+      type: string
+      index: true
+
+  referenceMany:
+    children:
+     targetDocument: Documents\Shop\Catalog
+     cascade: all

@@ -1,0 +1,47 @@
+<div id="shop_left_menu">
+
+  <ul class="root">
+
+    {% for child in leftMenu.children %}
+
+      {% if child.children %}
+        <li class="no-border">
+
+          {% if child.alias == leftMenuCurrent %}
+            <span class="text">{{ child.name }}</span><span class="icon-arrow">&nbsp;</span>
+          {% else %}
+            <a href="{{ url_catalog('/catalog',  leftMenu.alias, child.alias) }}"><span class="text hover">{{ child.name }}</span><span class="icon-arrow">&nbsp;</span></a>
+          {% endif %}
+
+          <div class="clear"></div>
+
+          <ul class="child">
+
+            {% for subChild in child.children %}
+
+              {% if subChild.alias == leftMenuCurrent %}
+                <li>{{ child.name }}</li>
+              {% else %}
+                <li><a href="{{ url_catalog('/catalog', leftMenu.alias, child.alias, subChild.alias) }}">{{ subChild.name }}</a></li>
+              {% endif %}
+
+            {% endfor %}
+
+          </ul>
+
+        </li>
+      {% else %}
+
+        {% if child.alias == leftMenuCurrent %}
+          <li>{{ child.name }}</li>
+        {% else %}
+          <li><a href="{{ url_catalog('/catalog', leftMenu.alias, child.alias) }}">{{ child.name }}</a></li>
+        {% endif %}
+
+      {% endif %}
+
+    {% endfor %}
+
+  </ul>
+
+</div>

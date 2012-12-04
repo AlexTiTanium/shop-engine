@@ -1,0 +1,63 @@
+{% extends _extend_shop %}
+
+{% import 'forms.html' as form %}
+
+{% block includes %}
+  {{ parent() }}
+
+  {{ addCss('css/shop') }}
+  {{ addJs('js/shop/inputsCollection') }}
+
+  <script type="text/javascript">
+    $(function (){
+      $('#sortBy').inputsCollection('select');
+      $('#filters input[type=checkbox]').inputsCollection('checkboxFilter');
+
+      $('.ellipse').dotdotdot();
+
+    });
+  </script>
+
+{% endblock %}
+
+{% block content %}
+  <div class="yui3-g site-width">
+
+    <div id="content-left" class="yui3-u-1-4">
+      {% include "cart.html" %}
+      {% include "shop_left_menu.html" %}
+      {% include "shop_filters.html" %}
+    </div>
+
+    <div id="shop" class="yui3-u-3-4">
+
+      <div class="shop_header">
+
+        <div id="breadcrumb">
+          {% include "shop_breadcrumb.html" %}
+        </div>
+
+        <div id="sort">
+         <div class="text">Сортировать:</div>
+
+         {{ form.select('sortBy',  'sortBy', {
+            'price::asc': 'от дешевых к дорогим',
+            'price::desc': 'от дорогих к дешевым',
+            'new::asc': 'новинки',
+            'promotions::asc': 'акции',
+            'dateAdd::asc': 'последние добавленные'
+         }, currentSortBy) }}
+
+        </div>
+
+      </div>
+
+      <div class="clear"></div>
+
+      {% include "shop_procucts.html" %}
+
+    </div>
+
+  </div>
+
+{% endblock %}

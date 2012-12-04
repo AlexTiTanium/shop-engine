@@ -1,0 +1,25 @@
+<div id="filters">
+
+  <h1>Подбор по параметрам</h1>
+
+  <div class="current-filters box">
+    <div>Производитель</div>
+    <a href="/">Ariel</a>
+    <a href="/">Tide</a>
+    <div>Тип ткани</div>
+    <a href="/">Для белых</a>
+  </div>
+
+  <a class="truncate-filters" href="#">Сбросить все фильтры</a>
+
+  <div class="filter-name">Производитель</div>
+
+  {{ form.checkbox('', 'producer::arial', 'arial') }}
+  {{ form.checkbox('', 'producer::tide', 'tide') }}
+
+  <div class="filter-name">Тип ткани</div>
+
+  {{ form.checkbox('', 'tip_tkani::arial', 'arial') }}
+  {{ form.checkbox('', 'tip_tkani::tide', 'tide') }}
+
+</div>

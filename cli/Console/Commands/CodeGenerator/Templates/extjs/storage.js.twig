@@ -1,0 +1,17 @@
+Ext.define('{{ appName|ucfirst }}.store.{{ storageName|ucfirst }}Store', {
+  extend:'Ext.data.Store',
+  storeId:'{{ storageName|ucfirst }}Store',
+  autoSync:true,
+  model:'{{ appName|ucfirst }}.model.{{ modelName|ucfirst }}Model',
+  pageSize: 15,
+  remoteSort: true,
+  proxy:{
+    type:'ajax',
+    api:{
+      read:'/admin/.json',
+      create:'/admin//create.json',
+      update:'/admin//update.json',
+      destroy:'/admin//destroy.json'
+    }
+  }
+});

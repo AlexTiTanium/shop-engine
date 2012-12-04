@@ -1,0 +1,8 @@
+Connection:
+  default:
+    host:     ''
+    userName: ''
+    pass:     ''
+    baseName: ''
+    prefix: ''
+    type: 'pdo_mysql'

@@ -1,0 +1,249 @@
+/**
+  --------------------------- header ------------------------------------------------------------
+**/
+
+.debug { background-color: #adff2f; }
+
+#header {
+  background-color: #363636;
+  box-shadow: 0 0 5px 2px rgba(54, 54, 54, 0.3);
+  -webkit-box-shadow: 0 0 5px 2px rgba(54, 54, 54, 0.3);
+}
+
+/** header menu **/
+#header-menu {}
+
+#header-menu ul {
+  margin: 0;
+  list-style: none;
+}
+
+#header-menu ul li {
+  float: left;
+}
+
+#header-menu ul li a {
+  display: block;
+  text-align: center;
+  padding: 15px 14px;
+  margin: 0;
+  font-size: 13px;
+  font-style: italic;
+  color: #dcdcdc;
+  text-decoration: underline;
+}
+
+#header-menu li a:hover {
+  text-decoration: none;
+}
+
+/** header address **/
+#header-address {
+  color: white;
+  font-size: 13px;
+  padding-top: 13px;
+}
+
+#header-address span {
+  padding-top: 13px;
+  padding-right: 8px;
+}
+
+/**
+  --------------------------- logo ------------------------------------------------------------
+**/
+
+#logo {
+  background-color: white;
+  padding-bottom: 24px;
+}
+
+/** logo logo **/
+#logo-logo a {
+  display: block;
+  padding-left: 9px;
+  padding-top: 19px;
+
+}
+
+#logo-desc span {
+  color: #434343;
+  font-size: 14px;
+  font-style: italic;
+  padding: 29px 0 0 14px;
+  display: block;
+}
+
+.ie #logo-search input {
+  line-height: 26px;
+}
+/** logo logo **/
+#logo-search input  {
+  border: 1px #d3d3d3 solid;
+  margin-top: 35px;
+  width: 254px;
+  height: 26px;
+  margin-left: 18px;
+  padding: 0 26px 0 5px;
+  -webkit-box-shadow: 0 0 5px 2px rgba(89, 89, 89, 0.1) inset;
+  box-shadow: 0 0 5px 2px rgba(89, 89, 89, 0.1) inset;
+  background: url("../images/key_enter.png") no-repeat 98%;
+}
+
+#logo-search input:hover {
+  border: 1px #9a9a9a solid;
+}
+
+#logo-search input:focus {
+  box-shadow: 0 0 3px 1px rgba(89, 89, 89, 0.4) inset;
+}
+
+/** logo phone **/
+#logo-phone {}
+
+#logo-phone span {
+  display: block;
+  padding: 34px 0 0 48px;
+  color: #b93939;
+  font-weight: bold;
+  font-size: 20px;
+  background: url("../images/phone.png") no-repeat scroll 23px 39px transparent;
+}
+
+/** menu **/
+#menu {
+  box-shadow: 0 0 6px 3px #EEEBEB;
+  -webkit-box-shadow: 0 0 6px 3px #EEEBEB;
+  padding-top: 0;
+  margin-bottom: 10px;
+  border-top: 1px #e8e8e8 solid;
+  border-bottom: 1px #e8e8e8 solid;
+  background-color: white;
+}
+
+#menu-menu {
+
+}
+
+#menu-menu ul {
+  margin: 0;
+  list-style: none;
+}
+
+#menu-menu ul li {
+  float: left;
+  position:relative;
+}
+
+#menu-menu ul li a {
+  display: block;
+  text-align: center;
+  padding: 13px 22px;
+  margin: 0;
+  text-decoration: none;
+  font-size: 17px;
+  color: #232323;
+  text-transform: uppercase;
+}
+
+#menu-menu ul li a:hover {
+  color: #b93939;
+}
+
+#menu-menu ul li a.current {
+  color: #b93939;
+}
+
+/**
+  --------------------------- content ------------------------------------------------------------
+**/
+#home-catalog div {
+  margin-bottom: 11px;
+}
+
+.content p.grey-text {
+  font-size: 13px;
+  color: #909090;
+}
+
+/**
+  --------------------------- RIGHT content ------------------------------------------------------------
+**/
+
+#content-right {
+  margin-top: 36px;
+}
+
+.box{
+  background-color: white;
+  border: 1px solid #ececec;
+  box-shadow: 0 0 6px 3px #EEEBEB;
+  -webkit-box-shadow: 0 0 6px 3px #EEEBEB;
+  margin-left: 15px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+}
+
+#cart .basketImg {
+  float: left;
+}
+
+#cart h4 {
+  margin-top: 10px;
+  margin-bottom: 16px;
+  margin-left: 45px;
+  color: #b93939;
+  font-size: 17px;
+}
+
+#cart p {
+  color: #2a2a2a;
+  font-size: 12px;
+  font-style: italic;
+}
+
+#campaigns {
+
+}
+
+#campaigns h4 {
+  color: #232323;
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+
+#campaigns a {
+  display: block;
+  color: #b93939;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+#campaigns p {
+  color: #333333;
+  font-size: 14px;
+}
+
+/**
+  --------------------------- footer ------------------------------------------------------------
+**/
+
+#footer {
+  background-color: white;
+  border-top: 1px #bcbcbc solid;
+  padding-top: 16px;
+  font-size: 13px;
+  color: #333333;
+}
+
+#footer b {
+  color: #888888;
+  font-weight: normal;
+}
+
+#footer a {
+  color: #b93939;
+  line-height: 20px;
+}

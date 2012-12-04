@@ -1,0 +1,14 @@
+name:
+  type: string
+  validators:
+    req: true
+
+type:
+  type: string
+  validators:
+    req: true
+
+nodeId:
+  type: string
+  validators:
+    req: true

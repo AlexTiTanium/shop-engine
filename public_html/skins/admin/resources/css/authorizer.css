@@ -1,0 +1,29 @@
+body {
+  background-image: linear-gradient(right bottom, #09387E 23%, #285CA5 62%, #5391DE 86%);
+  background-image: -o-linear-gradient(right bottom, #09387E 23%, #285CA5 62%, #5391DE 86%);
+  background-image: -moz-linear-gradient(right bottom, #09387E 23%, #285CA5 62%, #5391DE 86%);
+  background-image: -webkit-linear-gradient(right bottom, #09387E 23%, #285CA5 62%, #5391DE 86%);
+  background-image: -ms-linear-gradient(right bottom, #09387E 23%, #285CA5 62%, #5391DE 86%);
+
+  background-image: -webkit-gradient(
+  	linear,
+  	right bottom,
+  	left top,
+  	color-stop(0.23, #09387E),
+  	color-stop(0.62, #285CA5),
+  	color-stop(0.86, #5391DE)
+  );
+}
+/**--------------------- icons ---------------------------------------*/
+
+.ux-icon-system {
+  background-image: url("../icons/system-icon.png");
+}
+
+.ux-icon-shutdown {
+  background-image: url("../icons/shutdown-icon.png");
+}
+
+.ux-icon-application {
+  background-image: url("../icons/application-icon.png");
+}

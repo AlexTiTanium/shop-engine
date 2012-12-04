@@ -1,0 +1,38 @@
+<?php
+
+{{ namespace is defined ? "namespace " ~ namespace ~ ";" : "" }}
+
+{% for path in use %}
+use {{ path }};
+{% endfor %}
+
+class {{ className }} {{ extends is defined ? "extends " ~ extends : "" }} {
+
+  /**
+    * Bootstrap controller
+    *
+    **/
+  protected function setDefinition() {
+    $this->setName('{{ controllerName }}');
+    $this->setAllowedTypes('json');
+    $this->setRouter(new Router($this));
+    View::setCurrent(View::getJsonView());
+  }
+
+  /**
+   * After bootstrap
+   *
+   **/
+  public function setUp(){
+
+  }
+
+  /**
+   * On call
+   *
+   **/
+  protected function onCall(){
+
+  }
+
+}

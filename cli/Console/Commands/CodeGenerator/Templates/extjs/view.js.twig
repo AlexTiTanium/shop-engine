@@ -1,0 +1,12 @@
+Ext.define('{{ name|ucfirst }}.view.Main', {
+  id: '{{ name }}-main-window',
+  extend : 'Core.lib.Window',
+  title: 'App name',
+  appName: '{{ name|ucfirst }}',
+  iconCls: 'ux-icon-application',
+  border: false,
+  height: 400,
+  width: 600,
+  layout: 'fit',
+  items: []
+});

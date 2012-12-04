@@ -1,0 +1,373 @@
+/**
+  --------------------------- GLOBAL ------------------------------------------------------------
+**/
+
+#body {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 14px;
+  min-width: 940px;
+  background-color: #f5f5f5;
+}
+
+.site-width {
+  margin: auto; /* center in viewport */
+  width: 940px;
+}
+
+.clear {
+  clear: both;
+}
+
+.wrap {
+  margin: 30px 0 30px 20px;
+}
+
+.wrap-left-right {
+  margin: 0 22px;
+}
+
+body {
+  background-color: white;
+}
+
+fieldset {
+  margin-bottom: 11px;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.centered {
+  text-align: center;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: right;
+}
+
+.hide-this {
+  display: none;
+}
+
+.font-red {
+  color: #b11e22;
+}
+
+.font-black {
+  color: #212121 !important;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.margin-right {
+  margin-right: 10px;
+}
+
+.margin-left {
+  margin-left: 10px;
+}
+
+.margin-left-none {
+  margin-left: 0 !important;
+}
+
+.padding-top-20 {
+  padding-top: 20px;
+}
+
+.white-color {
+  background-color: #ffffff !important;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.white-background {
+  background-color: #ffffff !important;
+}
+
+.text-transform-none {
+  text-transform: none !important;
+}
+
+.transition-all {
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+/**
+  --------------------------- blockUI style ------------------------------------------------------------
+**/
+
+.blockMsg  {
+  background-color: #F8F8F8 !important;
+  border-radius: 12px !important;
+  border-color: #B31218 !important;
+  padding: 15px 0 0 24px !important;
+  text-align: left !important;
+  box-shadow: 1px 1px 6px 4px rgba(0, 0, 0, 0.30);
+}
+
+.blockMsg h3 {
+  color: #212121;
+  padding-left: 98px;
+  padding-top: 5px;
+}
+
+.blockMsg img {
+  float: left;
+}
+
+/**
+  --------------------------- Fixes ------------------------------------------------------------
+**/
+input::-webkit-input-placeholder, input:-moz-placeholder {
+   color: #c2c2c2;
+}
+
+/**
+*  --------------------------- Sticky Footer Solution -----------------------------------------
+  by Steve Hatcher
+  http://stever.ca http://www.cssstickyfooter.com
+**/
+html, body, #main {height: 100%;}
+
+body > #main { height: auto; min-height: 100%; }
+
+#main {  background-color: #f5f5f5; }
+/* must be same height as the footer */
+#content { overflow: auto; padding-bottom: 81px; }
+
+#footer {
+    position: relative;
+    margin-top: -61px; /* negative value of footer height */
+    height: 81px;
+    clear: both;
+}
+
+/*Opera Fix*/
+body:before { /* thanks to Maleika (Kohoutec)*/
+    content: "";
+    height:100%;
+    float: left;
+    width: 0;
+    margin-top: -32767px; /* thank you Erik J */
+}
+
+/**
+   ----------------------- Paginator --------------------------------------------------------
+*/
+.pagination a.grey-button {
+  font-weight: normal;
+  color: #4a4949;
+  font-size: 12px !important;
+  text-shadow: 0 1px 0 white;
+  padding: 0 10px !important;
+}
+
+.pagination a.grey-button span {
+  padding: 7px 0 !important;
+}
+
+.pagination span.red-button{
+  height: 31px !important;
+  padding: 0 10px !important;
+}
+
+.pagination span.red-button span {
+  padding: 7px 0 !important;
+  line-height: 18px !important;
+}
+
+.pagination .dots {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 5px;
+  position: relative;
+  top: 9px;
+}
+
+/**
+   ----------------------- Table --------------------------------------------------------
+*/
+.data-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.data-table th {
+  background: white;
+  text-align: center;
+  padding: 2px 9px;
+  color: #787878;
+  font-size: 11px;
+  line-height: 2.5em;
+  white-space: nowrap;
+  cursor: default;
+  border-bottom: 1px solid #dfe3e8;
+}
+
+.no-arrow tr {
+  background-image: none !important;
+}
+
+.data-table tr {
+  border-bottom: 1px solid #dfe3e8;
+  cursor: pointer;
+  background: #f5f9ff;
+}
+
+/** Preload arrow  **/
+.data-table tbody tr:hover {
+  background: #ebeff5;
+  transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+
+  box-shadow: 0 0 2px #CCCCCC;
+  -webkit-box-shadow: 0 0 2px #CCCCCC;
+  -moz-box-shadow: 0 0 2px #CCCCCC;
+}
+
+.data-table td {
+  background: url('../images/ffffff.gif') repeat-x;
+  padding: 11px 4px;
+  font-size: 12px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.data-table .red {
+  font-size: 13px;
+  color: #b91e24;
+  text-align: left;
+  font-weight: bold;
+  padding-left: 12px;
+}
+
+.data-table .date {
+  font-size: 12px;
+  color: #717171;
+}
+
+.data-table .bold {
+  font-size: 16px;
+  color: #3f3f3f;
+  font-weight: bold;
+}
+
+.data-table .bold span {
+  font-size: 11px;
+  color: #717171;
+}
+
+.data-table .bold-red {
+  font-size: 16px;
+  color: #b91e24;
+  font-weight: bold;
+}
+
+.data-table .bold-red span {
+  font-size: 11px;
+  color: #b91e24;
+}
+
+.data-table .placeholder {
+  width: 50px;
+}
+
+/**
+  --------------------------- Content ------------------------------------------------------------
+**/
+
+.content a {
+  font-size: 14px;
+  color: #232323;
+}
+
+.content h1 a { color: #000000; font-size: 17px; }
+.content h1 {
+  color: #000000;
+  margin: 2px 0 0 4px;
+  padding: 0;
+}
+
+.content h3 {
+  color: #343434;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 white;
+}
+
+.content h4 {
+  color: #343434;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: -10px;
+}
+
+.content, .content p {
+  color: #565656;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.content p {
+  margin: 17px 0;
+}
+
+.content ul {
+  list-style: none;
+  margin-left: 14px;
+  margin-bottom: 11px;
+}
+
+.content li:before {
+  content: "—";
+  margin-right: 7px;
+}
+
+.content li a {
+  color: #b93939;
+  text-decoration: none;
+  line-height: 22px;
+}
+
+.content li a:hover {
+  text-decoration: underline;
+}
+
+.content b {
+  color: #b81e23;
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.content hr {
+  border: 1px dashed #909090;
+}

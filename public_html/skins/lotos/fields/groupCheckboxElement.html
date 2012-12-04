@@ -1,0 +1,18 @@
+{% import "forms.html" as forms %}
+
+<fieldset>
+
+  {{ forms.label(id, label, validation.req) }}
+  {{ forms.error(error) }}
+
+  {% for key, label in items%}
+
+    {% set checked=false %}
+
+    {% if key in value %}
+      {% set checked=true %}
+    {% endif %}
+
+    {{ forms.checkbox(id, name~"[]", label, key, checked, class, false, style, "group-checkbox") }}
+  {% endfor %}
+</fieldset>

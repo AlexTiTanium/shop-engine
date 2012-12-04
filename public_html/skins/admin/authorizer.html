@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block header %}
+
+{{parent()}}
+
+{{ addCss([
+'extjs/resources/css/ext-all',
+'resources/css/authorizer'
+]) }}
+
+<script type="text/javascript">
+
+  var ROOT_PATH = '{{ROOT_PATH}}';
+  var IMAGES_PATH = '{{IMAGES}}';
+  var RESOURCES_PATH = '{{RESOURCES_PATH}}';
+  var DESKTOP_PATH = '{{DESKTOP_PATH}}';
+  var AUTHORIZER_PATH = '{{AUTHORIZER_PATH}}';
+  var TOKEN = '{{TOKEN}}';
+  var SITE_NAME = '{{SITE_NAME}}';
+
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+<script type="text/javascript">
+  document.getElementById('loading-message').innerHTML = 'Loading Core API…';
+</script>
+{{ addJs('extjs/ext-all-dev') }}
+
+<script type="text/javascript">
+  document.getElementById('loading-message').innerHTML = 'Loading Localization …';
+</script>
+{{ addJs('extjs/locale/ext-lang-ru') }}
+
+<script type="text/javascript">
+  document.getElementById('loading-message').innerHTML = 'Loading Application …';
+</script>
+{{ addJs('authorizer/Authorizer') }}
+
+<script type="text/javascript">
+
+  Ext.onReady(function (){
+
+    var animate = Ext.create('Ext.dom.CompositeElement');
+
+    animate.add(Ext.get('loading-mask'));
+    animate.add(Ext.get('loading'));
+
+    Ext.create('Ext.fx.Anim', {
+        target: animate,
+        duration: 1000,
+        from: {
+          opacity: 1
+        },
+        to: {
+           opacity: 0
+        },
+        callback: function(){
+          animate.hide(true);
+        }
+    });
+
+  });
+</script>
+
+{% endblock %}

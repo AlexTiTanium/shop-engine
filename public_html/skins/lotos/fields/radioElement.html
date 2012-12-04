@@ -1,0 +1,10 @@
+{% import "forms.html" as forms %}
+
+<fieldset>
+
+  {{ forms.label(id, label, validation.req) }}
+
+  {% for val, label in items %}
+    {{ forms.radio(id, name, val, label, value, class, size, error, style) }}
+  {% endfor %}
+</fieldset>

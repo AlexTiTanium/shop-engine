@@ -1,0 +1,36 @@
+/**--------------------- dirty override  -----------------------------*/
+.x-window-maximized {
+  top: 0 !important;
+}
+
+/**--------------------- style ---------------------------------------*/
+.ux-widget-wallpaper {
+  background-color: #09387e;
+}
+
+.ux-widget-wallpaper img {
+  width: 100%;
+  height: 100%;
+}
+
+.ux-core-LaunchPanel {
+  border-radius: 0 0 6px 6px;
+  margin: 0 60px 0 60px;
+  -webkit-box-shadow: 0px 5px 12px rgba(50, 50, 50, 0.41);
+  -moz-box-shadow:    0px 5px 12px rgba(50, 50, 50, 0.41);
+  box-shadow:         0px 5px 12px rgba(50, 50, 50, 0.41);
+}
+
+.ux-core-desktop {
+  background-image: linear-gradient(left , #09387E 36%, #114189 68%, #26559B 92%);
+  background-image: -o-linear-gradient(left , #09387E 36%, #114189 68%, #26559B 92%);
+  background-image: -moz-linear-gradient(left , #09387E 36%, #114189 68%, #26559B 92%);
+  background-image: -webkit-linear-gradient(left , #09387E 36%, #114189 68%, #26559B 92%);
+  background-image: -ms-linear-gradient(left , #09387E 36%, #114189 68%, #26559B 92%);
+
+}
+
+.ux-core-desktop  .x-panel-body {
+  border-top: none;
+  border-style: none;
+}

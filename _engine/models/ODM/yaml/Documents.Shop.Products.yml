@@ -1,0 +1,37 @@
+Documents\Shop\Products:
+  collection: shop_products
+  repositoryClass: 'models\ODM\Repositories\ShopProductsRepository'
+  fields:
+    id:
+      type: id
+      id: true
+    dateAdd:
+      type: date
+      index: true
+    catalog:
+      type: string
+      index: true
+    new:
+      type: boolean
+      index: true
+    promotion:
+      type: boolean
+      index: true
+    name:
+      type: string
+    price:
+      type: float
+      index: true
+    description:
+      type: string
+    searchIndex:
+      type: hash
+      index: true
+    attributes:
+      type: hash
+    filters:
+      type: hash
+      index: true
+    status:
+      type: string
+      index: true

@@ -1,0 +1,67 @@
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+$("#inputId_{{name}}").autocomplete({
+  source: function(request, response) {
+    $.ajax({
+       url: "http://ws.geonames.org/searchJSON",
+       dataType: "jsonp",
+       data: {
+         country:'RU',
+         lang: 'ru',
+         featureClass: "P",
+         style: "full",
+		 maxRows: 12,
+		 name_startsWith: request.term
+       },
+       success: function(data) {
+         response($.map(data.geonames, function(item) {
+		   return {
+		     label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+	         value: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName
+		   }
+		 }))
+       }
+    })
+  },
+  minLength: 2,
+  select: function(event, ui) {
+    //log(ui.item ? ("Selected: " + ui.item.label) : "Nothing selected, input was " + this.value);
+  },
+  open: function() {
+    $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+  },
+  close: function() {
+    $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+  }
+});
+
+});
+</script>
+<div class="form-row">
+ {% if error %}
+  <div class="ui-widget">
+    <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;"> 
+       <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span> 
+       <strong>Внимание:</strong> {{ error }}</p>
+    </div>
+  </div>
+ {% endif %}
+ 
+  <div class="label">{{label}}{% if validation.req==true %}<font color="red">*</font> {%endif%}  </div>
+  <div class="input-container">
+  
+    {% if value and type!='password' %}
+      {% set valueField = 'value="'~value~'"' %}
+    {% endif %}
+    
+    {% if validation.minlength %} 
+      {% set minlengthField = 'minlength="'~validation.minlength~'"' %}
+    {% endif %} 
+    
+    {% if validation.maxlength %} 
+      {% set maxlengthField = 'maxlength="'~validation.maxlength~'"' %}
+    {% endif %}
+    
+    <input id="inputId_{{name}}" rel="{{rel}}" name="{{name}}" {{ valueField }} type="{{type|default('text')}}" style="{{style}}" class="{{class}}" {{ maxlengthField }} {{ minlengthField }} />
+  </div>
+</div>

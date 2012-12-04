@@ -1,0 +1,18 @@
+<?php
+{{ namespace is defined ? "namespace " ~ namespace ~ ";" : "" }}
+{% for path in use %}
+use {{ path }};
+{% endfor %}
+
+class {{ className|ucfirst ~ 'Listener' }} {{ extends is defined ? "extends " ~ extends : "" }} {
+
+
+  /**
+   *
+   */
+  public function defaultEvent(){
+
+    throw new SystemException('Not implemented yet');
+  }
+
+}

@@ -1,0 +1,19 @@
+stringKey: string
+stringWithTags: string
+stringWithN: string
+
+integer100: integer
+integer100andAbc: integer
+integerAbcAnd100: integer
+integerBad: integer
+
+float98: float
+float98abc: float
+floatAbc98: float
+badFloat: float
+stringFloat: float
+
+booleanTrue: boolean
+booleanFalse: boolean
+booleanBad: boolean
+booleanNull: boolean
