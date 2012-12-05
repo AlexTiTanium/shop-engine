@@ -31,14 +31,7 @@ Ext.define('Shop.view.ProductsGrid', {
       triggerAction:'all',
       selectOnTab:true,
       editable: false,
-      store:[
-        ['active', 'Активный'],
-        ['ends', 'Заканчивается'],
-        ['new', 'Новинка'],
-        ['promotion', 'Акция'],
-        ['ended', 'Нет в наличии'],
-        ['disable', 'Не показывать']
-      ],
+      store: 'ProductStatusStore',
       lazyRender:true,
       listClass:'x-combo-list-small'
       },

@@ -19,7 +19,7 @@ Ext.define('Ext.form.field.NumericField', {
     useThousandSeparator: true,
     thousandSeparator: ',',
     alwaysDisplayDecimals: false,
-    fieldStyle: 'text-align: right;',
+    fieldStyle: 'text-align: left;',
     hideTrigger:true,
 
     initComponent: function(){
