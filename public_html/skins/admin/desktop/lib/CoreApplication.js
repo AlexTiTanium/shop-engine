@@ -2,7 +2,12 @@ Ext.define('Core.lib.CoreApplication', {
   extend:'Ext.app.Controller',
 
   requires:[
-    'Ext.ModelManager', 'Ext.data.Model', 'Ext.data.StoreManager', 'Ext.tip.QuickTipManager', 'Ext.ComponentManager', 'Ext.app.EventBus'
+    'Ext.ModelManager',
+    'Ext.data.Model',
+    'Ext.data.StoreManager',
+    'Ext.tip.QuickTipManager',
+    'Ext.ComponentManager',
+    'Ext.app.EventBus'
   ],
 
   /**

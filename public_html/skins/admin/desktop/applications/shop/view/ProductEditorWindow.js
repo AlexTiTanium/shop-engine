@@ -16,10 +16,35 @@ Ext.define('Shop.view.ProductEditorWindow', {
       border: false,
       layout: 'border',
       items: [
-        {region: 'west', width: 100, height: 100, xtype: 'image', src: Ext.imagePath + '/noimage.jpg' }
+        {
+          xtype: 'form',
+          region: 'west',
+          title: 'Основное описание товара',
+          flex: 2,
+
+          bodyPadding: 10,
+          items: [
+            {
+              xtype: 'textfield',
+              name: 'name',
+              fieldLabel: 'Название товара',
+              allowBlank: false  // requires a non-empty value
+            },
+            {
+              xtype: 'numericfield',
+              name: 'price',
+              allowNegative: false,
+              currencySymbol: 'Грн.',
+              decimalPrecision: 2,
+              allowDecimals: true,
+              alwaysDisplayDecimals: true,
+              fieldLabel: 'Цена'
+            }
+          ]
+        }
       ]
     }
-
+    // ---------------------------------------->
 
   ]
 });

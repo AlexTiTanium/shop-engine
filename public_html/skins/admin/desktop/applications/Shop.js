@@ -3,8 +3,8 @@ Ext.define('Core.applications.Shop', {
   name: 'Shop',
   appFolder: 'shop',
   allowMultiInstance: false,
-  controllers: ['Catalog', 'ProductsGrid', 'ProductsPanel'],
-  views: ['Main', 'Catalog', 'ProductsGrid'],
+  controllers: ['Catalog', 'ProductsGrid', 'ProductsPanel', 'ProductEditorWindow'],
+  views: ['Main', 'Catalog', 'ProductsGrid', 'ProductEditorWindow'],
   storage: ['CatalogStore', 'ProductsGridStore'],
   model: ['ProductsGridModel'],
 
