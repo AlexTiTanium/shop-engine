@@ -4,9 +4,16 @@ Ext.define('Core.applications.Shop', {
   appFolder: 'shop',
   allowMultiInstance: false,
   controllers: ['Catalog', 'ProductsGrid', 'ProductsPanel', 'ProductEditorWindow'],
-  views: ['Main', 'Catalog', 'ProductsGrid', 'ProductEditorWindow', 'ProductEditorForm'],
+  views: [
+    'Main',
+    'Catalog',
+    'ProductsGrid',
+    'ProductEditorWindow',
+    'ProductEditorForm',
+    'ProductImagesDataView'
+  ],
   storage: ['CatalogStore', 'ProductsGridStore', 'ProductStatusStore'],
-  model: ['ProductsGridModel'],
+  model: [ 'ProductsGridModel', 'ProductModel'],
 
   launch: function (){
     var me = this;

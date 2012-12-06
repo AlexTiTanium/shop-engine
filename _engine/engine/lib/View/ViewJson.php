@@ -2,6 +2,8 @@
 
 namespace lib\View;
 
+use lib\Debugger\Debugger;
+
 class ViewJson implements IView {
 
   private $json = array();
@@ -21,9 +23,11 @@ class ViewJson implements IView {
     $this->json = $json;
   }
 
-  public function error($message){
+  public function error(\Exception $e){
     $this->success = false;
-    $this->json['msg'] = $message;
+    $this->json['msg'] = $e->getMessage();
+    Debugger::exception(array('message' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine()));
+    Debugger::information();
   }
 
   public function add($json){

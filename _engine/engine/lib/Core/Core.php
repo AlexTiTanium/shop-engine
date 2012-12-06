@@ -3,7 +3,7 @@
 namespace lib\Core;
 
 use lib\Core\UrlService\Url;
-use lib\EngineExceptions\SystemException;
+use lib\EngineExceptions\NotFound404Exception;
 use lib\Debugger\Debugger;
 
 class Core {
@@ -18,7 +18,7 @@ class Core {
    *
    * @param Url $url
    *
-   * @throws SystemException
+   * @throws NotFound404Exception
    * @return void
    */
   static public function call(Url $url){
@@ -31,8 +31,7 @@ class Core {
       $controller->call($url);
     }else{
       Debugger::warn('Controller: '.$url->getController().' not found');
-      Manager::$Headers->error404();
-      throw new SystemException('Ошибка 404. Запрошеная вами страница не существует');
+      throw new NotFound404Exception('Ошибка 404. Запрошеная вами страница не существует');
     }
   }
 

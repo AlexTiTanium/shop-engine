@@ -3,7 +3,8 @@ Ext.define('Shop.controller.ProductEditorWindow', {
   views:['Shop.view.ProductEditorWindow'],
   requires:[],
   refs:[
-    { ref:'window', selector:'productEditorWindow' }
+    { ref:'window', selector:'productEditorWindow' },
+    { ref:'form',   selector:'productEditorForm' }
   ],
 
   init:function (){
@@ -11,9 +12,9 @@ Ext.define('Shop.controller.ProductEditorWindow', {
     var me = this;
 
     me.control({
-      '#productImage':{
-        afterrender: function(c){
-          c.el.on('click', me.beginUploadProductImage);
+      'productEditorWindow':{
+        show: function(c){
+          me.loadDataToForm();
         }
       }
     });
@@ -23,13 +24,20 @@ Ext.define('Shop.controller.ProductEditorWindow', {
   /**
    * Logic
    */
-  beginUploadProductImage: function(){
-    var fibasic = Ext.create('Ext.form.field.File', {
-        hideLabel: true
+  loadDataToForm: function(){
+
+    var me = this, data,
+      form = me.getForm().getForm(),
+      model = me.getModel('Shop.model.ProductModel');
+
+    model.load('somrecord', function(product){
+
+      console.log(product);
+
     });
 
-    var v = fibasic.getValue();
-                console.log('Selected File', v && v != '' ? v : 'None');
+    //form.loadRecord(data);
+
   }
 
 

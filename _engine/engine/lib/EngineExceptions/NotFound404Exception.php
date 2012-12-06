@@ -4,7 +4,7 @@ namespace lib\EngineExceptions;
 
 use lib\Core\Manager;
 
-class SystemException extends EngineException implements IException {
+class NotFound404Exception extends EngineException implements IException {
 
   public function __construct($message = null, $notLog = false){
     parent::__construct($message, 0, $notLog);
@@ -19,7 +19,7 @@ class SystemException extends EngineException implements IException {
 
   public function renderError(){
 
-    Manager::$Headers->error500();
+    Manager::$Headers->error404();
     parent::renderError();
   }
 

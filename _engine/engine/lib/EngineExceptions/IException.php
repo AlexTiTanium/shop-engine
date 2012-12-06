@@ -10,8 +10,8 @@ interface IException{
   public function getLine();                    // Source line
   public function getTrace();                   // An array of the backtrace()
   public function getTraceAsString();           // Formated string of trace
-  public function html();
-  public function xml();
+
+  public function renderError();
    
   /* Overrideable methods inherited from Exception class */
   public function __toString();                 // formated string for display

@@ -3,6 +3,7 @@
 namespace lib\View;
 
 use lib\EngineExceptions\SystemException;
+use lib\Debugger\Debugger;
 use lib\Core\Manager;
 use lib\Core\IncluderService;
 use lib\Templates\TemplatesManager;
@@ -27,8 +28,7 @@ class ViewHtml implements IView {
    *
    * @return \lib\View\ViewHtml
    */
-  public function clean()
-  {
+  public function clean() {
     $this->title = 'title';
     $this->js = array();
     $this->css = array();
@@ -43,8 +43,7 @@ class ViewHtml implements IView {
    * @param mixed $title
    * @return \lib\View\ViewHtml
    */
-  public function setTitle($title)
-  {
+  public function setTitle($title) {
     $this->title = $title;
     return $this;
   }
@@ -55,8 +54,7 @@ class ViewHtml implements IView {
    * @param string $title
    * @return \lib\View\ViewHtml
    */
-  public function addTitle($title)
-  {
+  public function addTitle($title) {
     $this->title = $title . ' &mdash; ' . $this->title;
     return $this;
   }
@@ -67,8 +65,7 @@ class ViewHtml implements IView {
    * @param string $keywords
    * @return \lib\View\ViewHtml
    */
-  public function setKeywords($keywords)
-  {
+  public function setKeywords($keywords) {
     $this->keywords = $keywords;
     return $this;
   }
@@ -79,8 +76,7 @@ class ViewHtml implements IView {
    * @param string $keywords
    * @return \lib\View\ViewHtml
    */
-  public function addKeywords($keywords)
-  {
+  public function addKeywords($keywords) {
     $this->keywords .= $keywords;
     return $this;
   }
@@ -91,8 +87,7 @@ class ViewHtml implements IView {
    * @param string $Description
    * @return \lib\View\ViewHtml
    */
-  public function setDescription($Description)
-  {
+  public function setDescription($Description) {
     $this->description = $Description;
     return $this;
   }
@@ -103,8 +98,7 @@ class ViewHtml implements IView {
    * @param string $Description
    * @return \lib\View\ViewHtml
    */
-  public function addDescription($Description)
-  {
+  public function addDescription($Description) {
     $this->description .= $Description;
     return $this;
   }
@@ -115,8 +109,7 @@ class ViewHtml implements IView {
    * @param mixed $name
    * @return \lib\View\ViewHtml
    */
-  public function setTemplate($name)
-  {
+  public function setTemplate($name) {
     $this->template = $name;
     return $this;
   }
@@ -127,9 +120,8 @@ class ViewHtml implements IView {
    * @param string $name
    * @return \lib\View\ViewHtml
    */
-  public function extendBy($name)
-  {
-    $this->set('_extend_'.$name, $this->template.'.'.TemplatesManager::getTplExtension());
+  public function extendBy($name) {
+    $this->set('_extend_' . $name, $this->template . '.' . TemplatesManager::getTplExtension());
     $this->template = $name;
 
     return $this;
@@ -141,9 +133,8 @@ class ViewHtml implements IView {
    * @param mixed $name
    * @return \lib\View\ViewHtml
    */
-  public function addJs($name)
-  {
-    if(array_search($name, $this->js) === false) {
+  public function addJs($name) {
+    if (array_search($name, $this->js) === false) {
       $this->js[] = $name;
     }
     return $this;
@@ -155,9 +146,8 @@ class ViewHtml implements IView {
    * @param mixed $name
    * @return \lib\View\ViewHtml
    */
-  public function addCss($name)
-  {
-    if(array_search($name, $this->css) === false) {
+  public function addCss($name) {
+    if (array_search($name, $this->css) === false) {
       $this->css[] = $name;
     }
     return $this;
@@ -169,12 +159,11 @@ class ViewHtml implements IView {
    * @param mixed $name
    * @return \lib\View\ViewHtml
    */
-  public function unsetCss($name)
-  {
+  public function unsetCss($name) {
 
     $key = array_search($name, $this->css);
 
-    if($key !== false) {
+    if ($key !== false) {
       unset($this->css[$key]);
     }
 
@@ -188,14 +177,13 @@ class ViewHtml implements IView {
    * @param mixed $value
    * @return ViewHtml
    */
-  public function set($name, $value = false)
-  {
-    if(is_string($name)) {
+  public function set($name, $value = false) {
+    if (is_string($name)) {
       $this->vars[$name] = $value;
     }
 
-    if(is_array($name) or is_object($name)) {
-      foreach($name as $key => $value) {
+    if (is_array($name) or is_object($name)) {
+      foreach ($name as $key => $value) {
         $this->set($key, $value);
       }
     }
@@ -209,39 +197,38 @@ class ViewHtml implements IView {
    * @throws SystemException
    * @return void
    */
-  private function parse()
-  {
+  private function parse() {
 
-    if(!$this->template) {
+    if (!$this->template) {
       throw new SystemException('Шаблон не задан');
     }
 
     $template = TemplatesManager::load($this->template);
     $template->setConstants(View::getConstants());
 
-    if(!empty($this->title)) {
+    if (!empty($this->title)) {
       $template->set('title', $this->title);
     }
 
-    if(!empty($this->js)) {
+    if (!empty($this->js)) {
       $js = '';
-      foreach($this->js as $value) {
+      foreach ($this->js as $value) {
         $js .= IncluderService::$skin->js($value) . "\n";
       }
       $template->set('js', $js);
     }
 
-    if(!empty($this->css)) {
+    if (!empty($this->css)) {
       $css = '';
-      foreach($this->css as $value) {
+      foreach ($this->css as $value) {
         $css .= IncluderService::$skin->css($value) . "\n";
       }
 
       $template->set('css', $css);
     }
 
-    if(!empty($this->vars)) {
-      foreach($this->vars as $key => $value) {
+    if (!empty($this->vars)) {
+      foreach ($this->vars as $key => $value) {
         $template->set($key, $value);
       }
     }
@@ -254,14 +241,35 @@ class ViewHtml implements IView {
    *
    * @return string
    */
-  public function toString()
-  {
+  public function toString() {
 
     Manager::$Headers->ContentType('text/html');
 
-    if($this->result){ return $this->result; }
+    if ($this->result) {
+      return $this->result;
+    }
     $this->parse();
     return $this->result;
   }
 
+  public function error(\Exception $e) {
+
+    if (!IncluderService::$skin or empty(TemplatesManager::$pathToTpl)) {
+      echo $e->getMessage();
+      Debugger::exception(array('message' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine()));
+      Debugger::information();
+      return;
+    }
+
+    $this->setTemplate('error');
+
+    $this->set('message', $e->getMessage());
+
+    $this->set('trace', str_replace('#', '<br />#', $e->getTraceAsString()));
+    $this->set('line', $e->getLine());
+    $this->set('file', $e->getFile());
+
+    Debugger::exception(array('message' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine()));
+    Debugger::information();
+  }
 }

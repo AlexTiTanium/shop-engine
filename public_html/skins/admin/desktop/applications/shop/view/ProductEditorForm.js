@@ -135,13 +135,10 @@ Ext.define('Shop.view.ProductEditorForm', {
           ]
         },
         {
-          cls:'x-plain',
           title:'Изображения товара',
           layout:'fit',
           items:{
-            xtype:'htmleditor',
-            name:'bio2',
-            fieldLabel:'Biography'
+            xtype:'productImagesDataView'
           }
         }
       ]

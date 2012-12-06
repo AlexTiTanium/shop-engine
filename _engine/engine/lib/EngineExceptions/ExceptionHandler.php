@@ -17,23 +17,19 @@ class ExceptionHandler {
   public static function handleException($exception){
 
 
-    $type = 'html';
-
     Debugger::setTraceException($exception);
 
     try{
 
       Log::write($exception->getMessage() . ' :: File:' . $exception->getFile() . ' Line:' . $exception->getLine());
 
-      if(method_exists($exception, $type)) {
-        $exception->$type();
-        return;
+      if($exception instanceof IException) {
+        $exception->renderError();
+      }else{
+        $sysException = new SystemException($exception->getMessage());
+        $sysException->copy($exception);
+        $sysException->renderError();
       }
-
-      $sysException = new SystemException($exception->getMessage());
-      $sysException->copy($exception);
-      $sysException->$type();
-      return;
 
     }catch (\Exception $e){
       echo $exception->getMessage() . ' <br><b>' . $exception->getFile() . '</b> LINE: ' . $exception->getLine();

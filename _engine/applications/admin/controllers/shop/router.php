@@ -8,7 +8,7 @@ $router->addEventListener('ShopProductTypesTreeListener')->When(array('action'=>
 $router->addEventListener('ShopProductPropertiesListener')->When(array('action'=>'shopTypesProperties','type'=>'json'));
 $router->addEventListener('ShopCatalogListener')->When(array('action'=>'shopCatalog','type'=>'json'));
 $router->addEventListener('ShopProductsListener')->When(array('action'=>'products','type'=>'json'));
-
+$router->addEventListener('ShopProductListener')->When(array('action'=>'product','type'=>'json'));
 
 // Default
 #$router->addEventListener('DefaultListener')->When(array('type'=>'json'));

@@ -45,9 +45,9 @@ Ext.define('Core.lib.Application', {
     // Css
     this.loadedCss = [];
 
-    Ext.each(this.css,      this.loadCss,  this);
-    Ext.each(this.storage,  this.getStore, this);
-    Ext.each(this.model,    this.getModel, this);
+    Ext.each(this.css,      this.loadCss,   this);
+    Ext.each(this.model,    this.loadModel, this);
+    Ext.each(this.storage,  this.loadStore, this);
 
     Ext.require(requires, function (){
       for(i = 0; i < ln; i++) {
@@ -82,7 +82,6 @@ Ext.define('Core.lib.Application', {
    */
   onBeforeLaunch:function (){
     this.launch.call(this.scope || this);
-    this.launched = true;
     this.fireEvent('launch', this);
 
     this.controllers.each(function (controller){
@@ -124,7 +123,7 @@ Ext.define('Core.lib.Application', {
     return controller;
   },
 
-  getStore:function (name){
+  loadStore:function (name){
     var store = Ext.StoreManager.get(name);
     if(!store) {
       store = Ext.create(this.getModuleClassName(name, 'store'));
@@ -132,9 +131,16 @@ Ext.define('Core.lib.Application', {
     return store;
   },
 
-  getModel:function (model){
+  loadModel:function (model){
     model = this.getModuleClassName(model, 'model');
-    return Ext.ModelManager.getModel(model);
+    var loadedModel;
+
+    Ext.require(model, function(){
+      loadedModel = Ext.ModelManager.getModel(model);
+      if(!loadedModel){
+        Ext.Error.raise('Loading model error, can not load model: ' + model);
+      }
+    });
   },
 
   getView:function (view){
