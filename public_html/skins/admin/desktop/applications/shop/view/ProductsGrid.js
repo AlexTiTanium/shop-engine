@@ -1,7 +1,7 @@
 Ext.define('Shop.view.ProductsGrid', {
   extend:'Ext.grid.Panel',
   alias:'widget.productsGrid',
-  store:'ProductsGridStore',
+  store:'ProductsStore',
   selType:'rowmodel',
   layout:'fit',
   hidden:true,
@@ -51,7 +51,7 @@ Ext.define('Shop.view.ProductsGrid', {
   dockedItems:[
     {
       xtype:'pagingtoolbar',
-      store:'ProductsGridStore',
+      store:'ProductsStore',
       dock:'bottom',
       displayInfo:true
     }

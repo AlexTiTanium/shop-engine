@@ -95,20 +95,20 @@ Ext.define('Shop.view.ProductEditorForm', {
       },
       items:[
         {
-          title: 'Описание товара',
+          title:'Описание товара',
           defaults:{
             width:230
           },
-          defaultType: 'textfield',
+          defaultType:'textfield',
           layout:'fit',
           items:{
-            xtype: 'htmleditor',
-            name: 'description',
-            enableFont: false
+            xtype:'htmleditor',
+            name:'description',
+            enableFont:false
           }
         },
         {
-          title: 'Свойства',
+          title:'Свойства',
           defaults:{
             width:230
           },
@@ -137,9 +137,31 @@ Ext.define('Shop.view.ProductEditorForm', {
         {
           title:'Изображения товара',
           layout:'fit',
-          items:{
-            xtype:'productImagesDataView'
-          }
+          bodyPadding:'0',
+          items:[
+            {
+              xtype:'panel',
+              items:[
+                { xtype:'productImagesDataView' }
+              ],
+              border:false,
+              bodyPadding:'5',
+              dockedItems:{
+                xtype:'toolbar',
+                dock:'bottom',
+                items:[
+                  {
+                    text:'Добавить',
+                    iconCls:'ux-icon-add',
+                    handler:function (){
+                      var win = Ext.create('Shop.view.ProductImageUploadForm');
+                      win.show();
+                    }
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }

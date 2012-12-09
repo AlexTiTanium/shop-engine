@@ -1,7 +1,18 @@
+Ext.define('ProductImageModel', {
+  extend:'Ext.data.Model',
+  fields:[
+    { id: 'id' }
+  ],
+  belongsTo: 'Shop.model.ProductModel'
+});
+
 Ext.define('Shop.model.ProductModel', {
   extend:'Ext.data.Model',
   fields:[
-    { name:'images' }
+    { name:'name' }
+  ],
+  hasMany: [
+    {model: 'ProductImageModel', name: 'images'}
   ],
   proxy:{
     type:'ajax',

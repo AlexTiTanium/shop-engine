@@ -26,18 +26,6 @@ Ext.define('Shop.controller.ProductEditorWindow', {
    */
   loadDataToForm: function(){
 
-    var me = this, data,
-      form = me.getForm().getForm(),
-      model = me.getModel('Shop.model.ProductModel');
-
-    model.load('somrecord', function(product){
-
-      console.log(product);
-
-    });
-
-    //form.loadRecord(data);
-
   }
 
 

@@ -1,8 +1,8 @@
-Ext.define('Shop.store.ProductsGridStore', {
+Ext.define('Shop.store.ProductsStore', {
   extend:'Ext.data.Store',
-  storeId:'ProductsGridStore',
+  storeId:'ProductsStore',
   autoSync:true,
-  model:'Shop.model.ProductsGridModel',
+  model:'Shop.model.ProductModel',
   pageSize: 15,
   remoteSort: true,
   proxy:{

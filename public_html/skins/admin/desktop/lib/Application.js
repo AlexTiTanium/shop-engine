@@ -152,7 +152,6 @@ Ext.define('Core.lib.Application', {
     var me  = this,
       link = document.createElement('link'),
       linkConfig = {
-        media: 'screen',
         rel: 'stylesheet',
         type: 'text/css',
         href: me.appFolder + '/' + cssPath

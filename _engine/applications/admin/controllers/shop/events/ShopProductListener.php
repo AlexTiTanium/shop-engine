@@ -13,6 +13,12 @@ class ShopProductListener extends Events {
 
   }
 
+  protected function imageUpload(){
+
+
+
+  }
+
   public function update(){
 
     $data = $this->post->getJsonRequest('data');
@@ -36,6 +42,12 @@ class ShopProductListener extends Events {
    */
   public function defaultEvent(){
 
+    $this->view->set('data',
+
+    array('images'=>array(
+      array('id'=>'fd45gdfgdffdfds.jpg'),
+      array('id'=>'fd46gdfgdffdfds.jpg')
+    )));
 
   }
 

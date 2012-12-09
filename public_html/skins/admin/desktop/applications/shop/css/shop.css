@@ -1,0 +1,62 @@
+#product-images-view .thumb {
+  background: none repeat scroll 0 0 #DDDDDD;
+  padding: 3px 3px 0;
+}
+
+#product-images-view .thumb {
+  padding-bottom: 3px;
+}
+
+#product-images-view .thumb img {
+  height: 60px;
+  width: 80px;
+}
+
+#product-images-view .thumb-wrap {
+  float: left;
+  margin: 4px 0 4px 4px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#product-images-view .thumb-wrap span {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  width: 86px;
+}
+
+#product-images-view .x-item-over {
+  background: url("../images/over.gif") repeat-x scroll left top #EFEFEF;
+  border: 1px solid #DDDDDD;
+  padding: 4px;
+}
+
+#product-images-view .x-item-selected {
+  background: url("../images/selected.gif") no-repeat scroll right bottom #EFF5FB;
+  border: 1px solid #99BBE8;
+  padding: 4px;
+}
+
+#product-images-view .x-item-selected .thumb {
+  background: none repeat scroll 0 0 transparent;
+}
+
+#product-images-view .loading-indicator {
+  background-image: url("../images/loading.gif");
+  background-position: left center;
+  background-repeat: no-repeat;
+  font-size: 11px;
+  margin: 10px;
+  padding-left: 20px;
+}
+
+.x-view-selector {
+  background-color: #C3DAF9;
+  border: 1px dotted #3399BB;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
