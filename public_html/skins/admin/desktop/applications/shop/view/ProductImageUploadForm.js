@@ -29,7 +29,7 @@ Ext.define('Shop.view.ProductImageUploadForm', {
             if(form.isValid()) {
 
               form.submit({
-                url:'photo-upload.php',
+                url:'/admin/shop/product/imageUpload.json',
                 waitMsg:'Uploading your photo...',
                 success:function (fp, o){
                   console.log(o);

@@ -27,6 +27,11 @@ class Events {
   protected $get;
 
   /**
+   * @var Data
+   */
+  protected $files;
+
+  /**
    * @var Url
    */
   protected $url;
@@ -58,6 +63,7 @@ class Events {
   public function __construct(Controller $controller){
 
     $this->post = new Data($_POST);
+    $this->files = new Data($_FILES);
     $this->url = $controller->getUrl();
     $this->get = new Data($controller->getUrl()->get());
     $this->view = View::getCurrent();

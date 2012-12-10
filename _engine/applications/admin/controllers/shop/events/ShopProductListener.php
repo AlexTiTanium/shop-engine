@@ -13,9 +13,9 @@ class ShopProductListener extends Events {
 
   }
 
-  protected function imageUpload(){
+  public function imageUpload(){
 
-
+    \lib\Debugger\Debugger::log($_FILES);
 
   }
 
