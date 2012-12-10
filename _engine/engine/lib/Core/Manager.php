@@ -3,6 +3,7 @@
 namespace lib\Core;
 
 use lib\Core\Autoloader;
+use lib\Core\Storage\LocalGridStorage;
 use lib\EngineExceptions\ExceptionHandler;
 use lib\Core\Manager\ManagerCache;
 use lib\Core\Manager\ManagerCrypt;
@@ -79,6 +80,11 @@ class Manager {
    * @var UrlService
    */
   public static $UrlService;
+
+  /**
+   * @var Storage
+   */
+  public static $Storage;
 
 
   /**
@@ -160,6 +166,7 @@ class Manager {
     self::$Crypt = new ManagerCrypt();
     self::$Cache = new ManagerCache();
     self::$UrlService = new UrlService(new RouterService());
+    self::$Storage = new Storage(new LocalGridStorage());
 
     self::$Timer->start('total');
   }

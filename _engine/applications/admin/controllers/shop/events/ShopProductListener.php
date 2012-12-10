@@ -17,6 +17,10 @@ class ShopProductListener extends Events {
 
     \lib\Debugger\Debugger::log($_FILES);
 
+    $storeUpload = new StoreUpload($this->files);
+
+    Manager::$Storage->save('product_images', $storeUpload);
+
   }
 
   public function update(){

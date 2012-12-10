@@ -101,7 +101,7 @@ class ManagerDefines {
     define('PATH_TEMPLATES', PATH_PUBLIC_SYSTEM . DS . $TEMPLATES . DS);
 
     # Путь к files store
-    define('PATH_FILES_STORE', PATH_PUBLIC_SYSTEM . DS . $FILES_STORE);
+    define('PATH_PUBLIC_FILES_STORE', PATH_PUBLIC_SYSTEM . DS . $FILES_STORE);
 
   }
 

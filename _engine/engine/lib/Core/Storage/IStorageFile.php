@@ -4,12 +4,12 @@ namespace lib\Core\Storage;
 
 /**
  * Created by JetBrains PhpStorm.
- * User: Alexander
+ * User: Alex
  * Date: 10.12.12
- * Time: 18:33
+ * Time: 23:28
  * To change this template use File | Settings | File Templates.
  */
-interface IStorage {
+interface IStorageFile {
 
-  public function write($storeId, IStorageFile $file);
+  public function getName();
 }

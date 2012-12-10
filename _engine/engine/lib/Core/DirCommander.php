@@ -100,6 +100,17 @@ class DirCommander {
   /**
    * @param string $name The name of directory
    *
+   * @return boolean
+   */
+  public function isExist($name){
+
+    $path = $this->getCurrentPath();
+    return $this->adapter->isExist($path.self::DS.$name);
+  }
+
+  /**
+   * @param string $name The name of directory
+   *
    * @throws DirCommanderException
    * @return DirCommander
    */

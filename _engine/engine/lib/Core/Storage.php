@@ -2,6 +2,9 @@
 
 namespace lib\Core;
 
+use lib\Core\Storage\IStorage;
+use lib\Core\Storage\IStorageFile;
+
 /**
  * Created by JetBrains PhpStorm.
  * User: Alexander
@@ -11,6 +14,17 @@ namespace lib\Core;
  */
 class Storage {
 
+  /**
+   * @var IStorage
+   */
+  private $storage;
 
+  public function __construct(IStorage $storage){
+    $this->storage = $storage;
+  }
+
+  public function save($storeRootId, IStorageFile $file){
+    return $this->storage->write($storeRootId, $file);
+  }
 
 }
