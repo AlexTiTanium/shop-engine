@@ -92,7 +92,7 @@ class ManagerDefines {
 
     # Основные пути системы
     $TEMPLATES = 'skins';
-    $FILES_STORE = 'filesStore';
+    $FILES_STORAGE = 'storage';
 
     # Определить путь для публичной части системы
     define('PATH_PUBLIC_SYSTEM', $PATH);
@@ -101,7 +101,7 @@ class ManagerDefines {
     define('PATH_TEMPLATES', PATH_PUBLIC_SYSTEM . DS . $TEMPLATES . DS);
 
     # Путь к files store
-    define('PATH_PUBLIC_FILES_STORE', PATH_PUBLIC_SYSTEM . DS . $FILES_STORE);
+    define('PATH_PUBLIC_FILES_STORAGE', PATH_PUBLIC_SYSTEM . DS . $FILES_STORAGE);
 
   }
 

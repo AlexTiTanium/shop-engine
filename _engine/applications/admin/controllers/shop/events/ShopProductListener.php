@@ -1,6 +1,7 @@
 <?php
 
 use lib\Core\Events;
+use lib\Core\Storage\UploadedFile;
 use lib\Core\Manager;
 use lib\Core\Data;
 use lib\Debugger\Debugger;
@@ -15,12 +16,8 @@ class ShopProductListener extends Events {
 
   public function imageUpload(){
 
-    \lib\Debugger\Debugger::log($_FILES);
-
-    $storeUpload = new StoreUpload($this->files);
-
+    $storeUpload = new UploadedFile('image');
     Manager::$Storage->save('product_images', $storeUpload);
-
   }
 
   public function update(){

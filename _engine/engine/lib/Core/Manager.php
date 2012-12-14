@@ -126,6 +126,7 @@ class Manager {
       ->addNamespace('Pagerfanta',  PATH_VENDOR)
       ->addPrefix('Twig',           PATH_VENDOR)
       ->addNamespace('CryptLib',    PATH_VENDOR)
+      ->addNamespace('Upload',      PATH_VENDOR)
       ->addPrefix('Swift',          PATH_VENDOR . DS . 'Swift' . DS . 'classes' . DS)
       ->addNamespace('Symfony',     PATH_VENDOR . DS . 'Doctrine' . DS)
       ->addNamespace('Documents',   PATH_MODELS_ODM)

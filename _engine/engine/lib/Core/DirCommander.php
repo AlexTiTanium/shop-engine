@@ -111,6 +111,30 @@ class DirCommander {
   /**
    * @param string $name The name of directory
    *
+   * @return boolean
+   */
+  public function isWritable($name){
+
+    $path = $this->getCurrentPath();
+    return $this->adapter->isWritable($path.self::DS.$name);
+  }
+
+  /**
+   * @param string $mode - Integer $mode Perm to chmod to.
+   *
+   * @return boolean
+   */
+  public function chmod($mode){
+
+    $path = $this->getCurrentPath().self::DS;
+    $this->adapter->chmod($path, $mode);
+
+    return $this;
+  }
+
+  /**
+   * @param string $name The name of directory
+   *
    * @throws DirCommanderException
    * @return DirCommander
    */

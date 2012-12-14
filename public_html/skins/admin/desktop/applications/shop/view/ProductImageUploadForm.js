@@ -34,6 +34,9 @@ Ext.define('Shop.view.ProductImageUploadForm', {
                 success:function (fp, o){
                   console.log(o);
                   Ext.Msg.alert('Success', 'Your photo "' + o.result.file + '" has been uploaded.');
+                },
+                failure: function(form, action){
+                  Ext.Msg.alert('Error', action.result.msg);
                 }
               });
 

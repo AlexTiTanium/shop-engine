@@ -12,4 +12,8 @@ namespace lib\Core\Storage;
 interface IStorageFile {
 
   public function getName();
+
+  public function getExtension();
+
+  public function copyTo($path);
 }
