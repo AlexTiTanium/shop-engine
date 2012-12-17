@@ -301,4 +301,62 @@ class Products extends \lib\Doctrine\DoctrineModel
     {
         return $this->status;
     }
+    /**
+     * @var boolean $new
+     *
+     * @ODM\Field(name="new", type="boolean")
+     */
+    protected $new;
+
+    /**
+     * @var boolean $promotion
+     *
+     * @ODM\Field(name="promotion", type="boolean")
+     */
+    protected $promotion;
+
+
+    /**
+     * Set new
+     *
+     * @param boolean $new
+     * @return Products
+     */
+    public function setNew($new)
+    {
+        $this->new = $new;
+        return $this;
+    }
+
+    /**
+     * Get new
+     *
+     * @return boolean $new
+     */
+    public function getNew()
+    {
+        return $this->new;
+    }
+
+    /**
+     * Set promotion
+     *
+     * @param boolean $promotion
+     * @return Products
+     */
+    public function setPromotion($promotion)
+    {
+        $this->promotion = $promotion;
+        return $this;
+    }
+
+    /**
+     * Get promotion
+     *
+     * @return boolean $promotion
+     */
+    public function getPromotion()
+    {
+        return $this->promotion;
+    }
 }
