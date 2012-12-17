@@ -57,7 +57,6 @@ Ext.define('Shop.controller.ProductsGrid', {
     var me = this, window;
 
     window = Ext.create('Shop.view.ProductEditorWindow');
-    //var form = window.down('form').getForm();
 
     window.show();
   }

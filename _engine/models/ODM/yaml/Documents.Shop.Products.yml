@@ -7,31 +7,81 @@ Documents\Shop\Products:
       id: true
     dateAdd:
       type: date
-      index: true
     catalog:
       type: string
-      index: true
     new:
       type: boolean
-      index: true
     promotion:
       type: boolean
-      index: true
     name:
       type: string
     price:
       type: float
-      index: true
     description:
       type: string
     searchIndex:
       type: hash
-      index: true
     attributes:
       type: hash
-    filters:
+    images:
       type: hash
-      index: true
     status:
       type: string
-      index: true
+
+  indexes:
+
+    dateAdd:
+      keys:
+        dateAdd: desc
+      options:
+        unique: false
+        safe: true
+
+    catalog:
+      keys:
+        catalog: desc
+      options:
+        unique: false
+        safe: true
+
+    new:
+      keys:
+        new: asc
+      options:
+        unique: false
+        safe: true
+
+    promotion:
+      keys:
+        promotion: asc
+      options:
+        unique: false
+        safe: true
+
+    price:
+      keys:
+        price: asc
+      options:
+        unique: false
+        safe: true
+
+    searchIndex:
+      keys:
+        searchIndex: asc
+      options:
+        unique: false
+        safe: true
+
+    attributes:
+      keys:
+        attributes: asc
+      options:
+        unique: false
+        safe: true
+
+    status:
+      keys:
+        status: asc
+      options:
+        unique: false
+        safe: true

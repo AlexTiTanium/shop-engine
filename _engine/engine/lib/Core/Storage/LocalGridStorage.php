@@ -30,7 +30,7 @@ class LocalGridStorage implements IStorage {
    * @param IStorageFile $file
    *
    * @throws \lib\EngineExceptions\SystemException
-   * @return void
+   * @return string - new file name
    */
   public function write($storeId, IStorageFile $file){
 
@@ -56,6 +56,7 @@ class LocalGridStorage implements IStorage {
     }
 
     $dc->cd($newFolderHash);
-    $file->copyTo($dc->getCurrentPath());
+
+    return $file->copyTo($dc->getCurrentPath());
   }
 }

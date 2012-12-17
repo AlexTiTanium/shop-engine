@@ -359,4 +359,46 @@ class Products extends \lib\Doctrine\DoctrineModel
     {
         return $this->promotion;
     }
+    /**
+     * @var hash $images
+     *
+     * @ODM\Field(name="images", type="hash")
+     */
+    protected $images;
+
+
+    /**
+     * Set images
+     *
+     * @param hash $images
+     * @return Products
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+        return $this;
+    }
+
+  /**
+   * Set images
+   *
+   * @param $imageName
+   *
+   * @return Products
+   */
+    public function addImage($imageName)
+    {
+        $this->images[] = $imageName;
+        return $this;
+    }
+
+    /**
+     * Get images
+     *
+     * @return hash $images
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
 }

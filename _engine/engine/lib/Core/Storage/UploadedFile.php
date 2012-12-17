@@ -75,9 +75,12 @@ class UploadedFile implements IStorageFile {
    * Copy file to path
    *
    * @param string $path
+   * @return string
    */
   public function copyTo($path) {
     $storage = new FileSystem($path);
     $storage->upload($this->file);
+
+    return $this->file->getNameWithExtension();
   }
 }

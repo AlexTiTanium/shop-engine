@@ -38,7 +38,7 @@ Ext.define('Shop.view.ProductEditorForm', {
               items:[
                 {
                   fieldLabel:'Название товара',
-                  name:'first',
+                  name:'name',
                   anchor:'95%'
                 },
                 {

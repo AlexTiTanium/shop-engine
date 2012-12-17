@@ -4,7 +4,7 @@ Ext.define('Shop.controller.ProductEditorWindow', {
   requires:[],
   refs:[
     { ref:'window', selector:'productEditorWindow' },
-    { ref:'form',   selector:'productEditorForm' }
+    { ref:'form', selector:'productEditorForm' }
   ],
 
   init:function (){
@@ -13,8 +13,37 @@ Ext.define('Shop.controller.ProductEditorWindow', {
 
     me.control({
       'productEditorWindow':{
-        show: function(c){
-          me.loadDataToForm();
+        show:function (window){
+          me.loadDataToForm(window);
+        },
+        beforeclose:function (window){
+
+          console.log(window);
+
+          var form = window.down('form'), me = this;
+
+          if(me.isNeedSync(form)) {
+            me.syncData(form, function (){
+              window.close();
+            });
+            return false;
+          }
+
+          return true;
+        }
+      },
+      'productEditorWindow tool[type=save]':{
+        click:function (btn){
+          var form = btn.up('window').down('form');
+          me.syncData(form);
+        }
+      },
+
+      'ProductImageUploadForm button[action=upload]': {
+        click:function (btn){
+
+          var form = btn.up('form');
+          me.imageUpload(form);
         }
       }
     });
@@ -24,9 +53,81 @@ Ext.define('Shop.controller.ProductEditorWindow', {
   /**
    * Logic
    */
-  loadDataToForm: function(){
+  loadDataToForm:function (window){
+
+    var me = this, form = window.down('form');
+
+    var record = Ext.create('Shop.model.ProductModel');
+
+    record.save({
+      callback:function (){
+        form.loadRecord(record);
+        console.log(me.getCurrentProductId());
+      }
+    });
+
+
+  },
+
+  syncData: function (form, callback){
+
+    if(!form.getForm().isValid()) {
+      Ext.msg('Ошибка сохранения', 'Данные не прошли валидацию, форма не будет сохранена');
+      return;
+    }
+
+    form.setLoading('Сохранение данных');
+
+    var record = form.getRecord(), values = form.getForm().getValues();
+
+    record.set(values);
+
+    record.save({
+      callback:function (){
+        form.setLoading(false);
+        if(callback) {
+          callback();
+        }
+      }
+    });
+  },
+
+  getCurrentProductId: function(){
+    return this.getForm().getRecord().getId();
+  },
+
+  isNeedSync:function (form){
+
+    var record = form.getRecord(), values = form.getForm().getValues();
+
+    record.set(values);
+
+    return !Ext.isEmptyObject(record.getChanges());
+  },
+
+  imageUpload: function (form){
+
+    var me = this;
+
+    if(!form.getForm().isValid()) {
+      Ext.msg('Ошибка загрузки', 'Данные не прошли валидацию, форма не будет сохранена');
+      return;
+    }
+
+    form.submit({
+      url:'/admin/shop/product/imageUpload.json',
+      waitMsg:'Отправка файла на сервер...',
+      params: {
+          id: me.getCurrentProductId()
+      },
+      success:function (fp, o){
+        form.up('window').close();
+      },
+      failure:function (form, action){
+        Ext.Msg.alert('Error', action.result.msg);
+      }
+    });
 
   }
-
 
 });

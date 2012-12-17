@@ -11,5 +11,11 @@ namespace lib\Core\Storage;
  */
 interface IStorage {
 
+  /**
+   * @param string $storeId
+   * @param IStorageFile $file
+   *
+   * @return string - new file name
+   */
   public function write($storeId, IStorageFile $file);
 }

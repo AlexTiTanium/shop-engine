@@ -1,5 +1,6 @@
 Ext.define('Shop.view.ProductImageUploadForm', {
   extend:'Ext.window.Window',
+  alias: 'widget.ProductImageUploadForm',
   title:'Загрузить изобржение продукта',
   width:400,
   modal:true,
@@ -22,27 +23,7 @@ Ext.define('Shop.view.ProductImageUploadForm', {
       buttons:[
         {
           text:'Загрузить',
-          handler:function (btn){
-
-            var form = this.up('form').getForm();
-
-            if(form.isValid()) {
-
-              form.submit({
-                url:'/admin/shop/product/imageUpload.json',
-                waitMsg:'Uploading your photo...',
-                success:function (fp, o){
-                  console.log(o);
-                  Ext.Msg.alert('Success', 'Your photo "' + o.result.file + '" has been uploaded.');
-                },
-                failure: function(form, action){
-                  Ext.Msg.alert('Error', action.result.msg);
-                }
-              });
-
-            } // form valid
-
-          } // handler
+          action: 'upload'
         }
       ]
     }

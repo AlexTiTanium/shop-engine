@@ -7,7 +7,10 @@ Ext.define('Shop.view.ProductEditorWindow', {
   alias: 'widget.productEditorWindow',
   height: 425,
   width:700,
-
+  tools:[{
+    type:'save',
+    tooltip: 'Save data'
+  }],
   items:[
     { xtype: 'productEditorForm' }
   ]

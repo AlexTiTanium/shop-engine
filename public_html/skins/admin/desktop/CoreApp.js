@@ -12,6 +12,15 @@ Ext.override(Ext.data.AbstractStore,{
     indexOf: Ext.emptyFn
 });
 
+Ext.isEmptyObject = function(obj){
+
+  for(var prop in obj) {
+    if(obj.hasOwnProperty(prop)) { return false; }
+  }
+
+  return true;
+};
+
 Ext.state.Manager.setProvider(new Ext.state.CookieProvider({
   expires: new Date(new Date().getTime()+(1000*60*60*24*7)) //7 days from now
 }));
