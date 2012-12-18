@@ -29,7 +29,7 @@ class LocalGridStorage implements IStorage {
    * @param $storeId
    * @param IStorageFile $file
    *
-   * @throws \lib\EngineExceptions\SystemException
+   * @throws SystemException
    * @return string - new file name
    */
   public function write($storeId, IStorageFile $file){

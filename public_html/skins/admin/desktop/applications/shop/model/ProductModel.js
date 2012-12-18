@@ -9,7 +9,9 @@ Ext.define('ProductImageModel', {
 Ext.define('Shop.model.ProductModel', {
   extend:'Ext.data.Model',
   fields:[
-    {name: 'name', type: 'string', defaultValue: 'Unknown'}
+    {name: 'name', type: 'string', defaultValue: 'Unknown'},
+    {name: 'catalog', type: 'string'}
+
   ],
   hasMany: [
     {model: 'ProductImageModel', name: 'images'}

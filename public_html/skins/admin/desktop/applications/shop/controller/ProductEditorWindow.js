@@ -18,7 +18,7 @@ Ext.define('Shop.controller.ProductEditorWindow', {
         },
         beforeclose:function (window){
 
-          console.log(window);
+          //console.log(window);
 
           var form = window.down('form'), me = this;
 
@@ -79,6 +79,8 @@ Ext.define('Shop.controller.ProductEditorWindow', {
     form.setLoading('Сохранение данных');
 
     var record = form.getRecord(), values = form.getForm().getValues();
+
+    value['catalog'] = 'fsdfsdf';
 
     record.set(values);
 

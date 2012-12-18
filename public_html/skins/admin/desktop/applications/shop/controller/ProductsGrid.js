@@ -15,7 +15,7 @@ Ext.define('Shop.controller.ProductsGrid', {
     me.control({
       'shopMainWindow':{
         show: function(){
-          me.editProduct(null);
+          //me.editProduct(null);
         }
       },
       'catalog':{
