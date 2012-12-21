@@ -3,8 +3,9 @@ Ext.define('Shop.controller.ProductEditorWindow', {
   views:['Shop.view.ProductEditorWindow'],
   requires:[],
   refs:[
-    { ref:'window', selector:'productEditorWindow' },
-    { ref:'form', selector:'productEditorForm' }
+    { ref:'window',   selector:'productEditorWindow' },
+    { ref:'form',     selector:'productEditorForm' },
+    { ref:'catalog',  selector:'shopMainWindow > catalog' }
   ],
 
   init:function (){
@@ -17,8 +18,6 @@ Ext.define('Shop.controller.ProductEditorWindow', {
           me.loadDataToForm(window);
         },
         beforeclose:function (window){
-
-          //console.log(window);
 
           var form = window.down('form'), me = this;
 
@@ -59,17 +58,18 @@ Ext.define('Shop.controller.ProductEditorWindow', {
 
     var record = Ext.create('Shop.model.ProductModel');
 
+    record.set('catalog', me.getCurrentSelectedCatalogNode().getId());
+
     record.save({
       callback:function (){
         form.loadRecord(record);
-        console.log(me.getCurrentProductId());
       }
     });
-
-
   },
 
   syncData: function (form, callback){
+
+    var me = this;
 
     if(!form.getForm().isValid()) {
       Ext.msg('Ошибка сохранения', 'Данные не прошли валидацию, форма не будет сохранена');
@@ -78,9 +78,8 @@ Ext.define('Shop.controller.ProductEditorWindow', {
 
     form.setLoading('Сохранение данных');
 
-    var record = form.getRecord(), values = form.getForm().getValues();
-
-    value['catalog'] = 'fsdfsdf';
+    var record = form.getRecord(),
+      values = form.getForm().getValues();
 
     record.set(values);
 
@@ -96,6 +95,10 @@ Ext.define('Shop.controller.ProductEditorWindow', {
 
   getCurrentProductId: function(){
     return this.getForm().getRecord().getId();
+  },
+
+  getCurrentSelectedCatalogNode: function(){
+    return this.getCatalog().getSelectionModel().getSelection()[0];
   },
 
   isNeedSync:function (form){

@@ -43,6 +43,7 @@ Ext.define('Shop.view.ProductEditorForm', {
                 },
                 {
                   xtype:'combobox',
+                  name: 'status',
                   fieldLabel:'Статус',
                   triggerAction:'all',
                   selectOnTab:true,

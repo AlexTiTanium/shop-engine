@@ -62,8 +62,20 @@ class ShopProductListener extends Events {
 
     $data = $this->post->getJsonRequest('data');
 
+    $product = $this->productRepo->find($data->getRequired('id'));
+
+    $this->setData($product, $data);
+
+    $this->productRepo->update($product);
+    $this->view->set('data', $product->toFlatArray());
   }
 
+  /**
+   * Fill model fields
+   *
+   * @param Products $product
+   * @param Data $data
+   */
   private function setData(Products $product, Data $data){
 
     $product->setName($data->get('name', 'Unknown'));
@@ -87,7 +99,7 @@ class ShopProductListener extends Events {
     $this->setData($product, $data);
 
     $this->productRepo->update($product);
-    $this->view->set('data', array('id'=>$product->getId()));
+    $this->view->set('data', $product->toFlatArray());
   }
 
   /**
@@ -100,17 +112,12 @@ class ShopProductListener extends Events {
   }
 
   /**
-   * Product data
+   * Product data by id
    */
   public function defaultEvent(){
 
-    $this->view->set('data',
-
-    array('images'=>array(
-      array('id'=>'fd45gdfgdffdfds.jpg'),
-      array('id'=>'fd46gdfgdffdfds.jpg')
-    )));
-
+    $product = $this->productRepo->find($this->get->getRequired('id'));
+    $this->view->set('data', $product->toFlatArray());
   }
 
 }
