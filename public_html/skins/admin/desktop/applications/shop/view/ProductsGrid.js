@@ -16,23 +16,34 @@ Ext.define('Shop.view.ProductsGrid', {
     {  action:'edit-product', xtype:'button', iconCls:'ux-icon-gear', text:'Редактировать' }
   ],
   columns:[
-    { text:'Товар', dataIndex:'name', flex:1, editor:{
+    { text:'Товар', dataIndex:'name', flex:4, editor:{
       xtype:'textfield',
       allowBlank:false
     }},
 
-    { text:'Цена', dataIndex:'price', flex:1, editor:{
-      xtype:'spinnerfield',
-      allowBlank:false
+    { text:'Цена', dataIndex:'price', flex:2, editor:{
+      xtype:'numericfield',
+      name:'price',
+      allowNegative:false,
+      currencySymbol:'Грн.',
+      decimalPrecision:2,
+      allowDecimals:true,
+      alwaysDisplayDecimals:true
     }},
 
-    { text:'Статус', dataIndex:'status', editor:{
+    { text:'Количество', dataIndex:'count', flex:1, editor:{
+      xtype:'numberfield',
+      name:'count'
+    }},
+
+    { text:'Статус', dataIndex:'status', flex:2, editor:{
       xtype:'combobox',
       triggerAction:'all',
       selectOnTab:true,
       editable: false,
       store: 'ProductStatusStore',
-      lazyRender:true,
+      displayField: 'text',
+      valueField: 'value',
       listClass:'x-combo-list-small'
       },
       renderer: function(key){
@@ -41,8 +52,9 @@ Ext.define('Shop.view.ProductsGrid', {
           ends: 'Заканчивается',
           new: 'Новинка',
           promotion: 'Акция',
-          text: 'Нет в наличии' ,
-          disable: 'Не показывать'
+          ended: 'Нет в наличии' ,
+          disable: 'Не показывать',
+          coming_soon: 'Ожидается поставка'
         };
         return data[key];
       }

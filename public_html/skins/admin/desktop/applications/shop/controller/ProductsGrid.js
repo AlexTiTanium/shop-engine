@@ -28,8 +28,25 @@ Ext.define('Shop.controller.ProductsGrid', {
       },
       'productsGrid button[action=add-product]':{
         click:function (btn){
-          var id = me.getSelectedRecord();
-          me.editProduct(id);
+          me.editProduct(null);
+        }
+      },
+      'productsGrid button[action=edit-product]':{
+        click:function (btn){
+          var record = me.getSelectedRecord();
+          me.editProduct(record.getId());
+        }
+      },
+      'productsGrid button[action=remove-product]':{
+        click:function (btn){
+
+          var record = me.getSelectedRecord();
+
+          Ext.Msg.confirm('Удалить продукт', 'Вы действительно хотите удалить продукт?', function(button) {
+            if (button === 'yes') {
+              me.removeProduct(record);
+            }
+          });
         }
       }
     });
@@ -52,11 +69,22 @@ Ext.define('Shop.controller.ProductsGrid', {
     return this.getGrid().getSelectionModel().getSelection()[0];
   },
 
+  removeProduct:function (product){
+
+    var me = this, store = me.getGrid().getStore();
+
+    store.remove(product);
+  },
+
   editProduct:function (id){
 
     var me = this, window;
 
     window = Ext.create('Shop.view.ProductEditorWindow');
+
+    if(id){
+      window.editId = id;
+    }
 
     window.show();
   }

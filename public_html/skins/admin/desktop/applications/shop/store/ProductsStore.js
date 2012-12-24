@@ -9,9 +9,9 @@ Ext.define('Shop.store.ProductsStore', {
     type:'ajax',
     api:{
       read:'/admin/shop/products.json',
-      create:'/admin/shop/products/create.json',
-      update:'/admin/shop/products/update.json',
-      destroy:'/admin/shop/products/destroy.json'
+      create:'/admin/shop/product/create.json',
+      update:'/admin/shop/product/update.json',
+      destroy:'/admin/shop/product/destroy.json'
     }
   }
 });

@@ -59,7 +59,7 @@ Ext.define('Shop.view.ProductEditorForm', {
             },
             {
               xtype:'container',
-              flex:1,
+              flex:2,
               layout:'anchor',
               defaultType:'textfield',
               items:[
@@ -75,9 +75,23 @@ Ext.define('Shop.view.ProductEditorForm', {
                   anchor:'95%'
                 },
                 {
+                  xtype:'textfield',
+                  fieldLabel:'Артикул',
+                  name:'marking',
+                  anchor:'95%'
+                }
+              ]
+            },
+            {
+              xtype:'container',
+              flex:1,
+              layout:'anchor',
+              defaultType:'textfield',
+              items:[
+                {
                   xtype:'numberfield',
-                  fieldLabel:'Кол. на складе',
-                  name:'email',
+                  fieldLabel:'Кол.',
+                  name:'count',
                   anchor:'95%'
                 }
               ]

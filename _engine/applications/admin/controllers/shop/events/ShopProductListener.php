@@ -82,6 +82,8 @@ class ShopProductListener extends Events {
     $product->setDescription($data->get('description', ''));
     $product->setPrice($data->get('price', '0.00'));
     $product->setStatus($data->get('status', Products::STATUS_DISABLE));
+    $product->setCount($data->get('count', 100));
+    $product->setMarking($data->get('marking', null));
   }
 
   /**
@@ -109,6 +111,9 @@ class ShopProductListener extends Events {
 
     $data = $this->post->getJsonRequest('data');
 
+    $product = $this->productRepo->find($data->getRequired('id'));
+
+    $this->productRepo->delete($product);
   }
 
   /**
@@ -116,7 +121,7 @@ class ShopProductListener extends Events {
    */
   public function defaultEvent(){
 
-    $product = $this->productRepo->find($this->get->getRequired('id'));
+    $product = $this->productRepo->find($this->url->getId());
     $this->view->set('data', $product->toFlatArray());
   }
 

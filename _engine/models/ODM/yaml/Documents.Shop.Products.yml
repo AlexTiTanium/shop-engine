@@ -9,6 +9,10 @@ Documents\Shop\Products:
       type: date
     catalog:
       type: string
+    count:
+      type: int
+    marking:
+      type: string
     new:
       type: boolean
     promotion:
@@ -80,6 +84,13 @@ Documents\Shop\Products:
         safe: true
 
     status:
+      keys:
+        status: asc
+      options:
+        unique: false
+        safe: true
+
+    marking:
       keys:
         status: asc
       options:

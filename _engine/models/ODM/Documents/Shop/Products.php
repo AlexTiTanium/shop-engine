@@ -386,4 +386,62 @@ class Products extends \lib\Doctrine\DoctrineModel {
   public function getImages() {
     return $this->images;
   }
+    /**
+     * @var int $count
+     *
+     * @ODM\Field(name="count", type="int")
+     */
+    protected $count;
+
+    /**
+     * @var string $marking
+     *
+     * @ODM\Field(name="marking", type="string")
+     */
+    protected $marking;
+
+
+    /**
+     * Set count
+     *
+     * @param int $count
+     * @return Products
+     */
+    public function setCount($count)
+    {
+        $this->count = $count;
+        return $this;
+    }
+
+    /**
+     * Get count
+     *
+     * @return int $count
+     */
+    public function getCount()
+    {
+        return $this->count;
+    }
+
+    /**
+     * Set marking
+     *
+     * @param string $marking
+     * @return Products
+     */
+    public function setMarking($marking)
+    {
+        $this->marking = $marking;
+        return $this;
+    }
+
+    /**
+     * Get marking
+     *
+     * @return string $marking
+     */
+    public function getMarking()
+    {
+        return $this->marking;
+    }
 }

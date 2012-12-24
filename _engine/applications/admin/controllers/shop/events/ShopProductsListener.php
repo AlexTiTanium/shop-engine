@@ -25,19 +25,11 @@ class ShopProductsListener extends Events {
   public function update(){
 
     $data = $this->post->getJsonRequest('data');
-
   }
 
   public function create(){
 
     $data = $this->post->getJsonRequest('data');
-
-  }
-
-  public function destroy(){
-
-    $data = $this->post->getJsonRequest('data');
-
   }
 
   /**

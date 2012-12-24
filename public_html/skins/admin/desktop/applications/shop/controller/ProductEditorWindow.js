@@ -54,17 +54,28 @@ Ext.define('Shop.controller.ProductEditorWindow', {
    */
   loadDataToForm:function (window){
 
-    var me = this, form = window.down('form');
+    var me = this, record, form = window.down('form');
 
-    var record = Ext.create('Shop.model.ProductModel');
+    if(window.editId){
 
-    record.set('catalog', me.getCurrentSelectedCatalogNode().getId());
+      Shop.model.ProductModel.load(window.editId, {
+        success: function(product) {
+          form.loadRecord(product);
+        }
+      });
 
-    record.save({
-      callback:function (){
-        form.loadRecord(record);
-      }
-    });
+    }else{
+
+      record = Ext.create('Shop.model.ProductModel');
+
+      record.set('catalog', me.getCurrentSelectedCatalogNode().getId());
+
+      record.save({
+        callback:function (){
+          form.loadRecord(record);
+        }
+      });
+    }
   },
 
   syncData: function (form, callback){
