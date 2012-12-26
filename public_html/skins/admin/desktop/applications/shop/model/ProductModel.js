@@ -15,8 +15,7 @@ Ext.define('Shop.model.ProductModel', {
     {name: 'price', type: 'float'},
     {name: 'marking', type: 'string'},
     {name: 'count', type: 'integer'},
-    {name: 'description', type: 'string'},
-
+    {name: 'description', type: 'string'}
   ],
   hasMany: [
     {model: 'ProductImageModel', name: 'images'}

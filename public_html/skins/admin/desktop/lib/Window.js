@@ -1,4 +1,4 @@
-Ext.define('Core.lib.Window', {
+Ext.define('Core.lib.Window', {extend:'Ext.window.Window',
   state:{
     ACTIVE:'active',
     HIDDEN:'hidden',
@@ -6,7 +6,7 @@ Ext.define('Core.lib.Window', {
   },
   appName:null,
   iconCls:'ux-icon-application',
-  extend:'Ext.window.Window',
+
   layout:'fit',
   height:300,
   width:400,
@@ -14,7 +14,8 @@ Ext.define('Core.lib.Window', {
   minimizable:true,
   maximizable:true,
   currentState:null,
-  renderTo:Ext.select("div.ux-core-desktop-body").first(),
+
+  renderTo: Ext.select("div.ux-core-desktop-body").first(),
 
   taskBar:null,
 
@@ -22,6 +23,7 @@ Ext.define('Core.lib.Window', {
    *
    */
   initComponent:function (){
+
     var me = this;
 
     me.taskBar = Ext.CoreApplication.TaskBar;
