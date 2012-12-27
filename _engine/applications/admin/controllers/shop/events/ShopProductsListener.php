@@ -37,7 +37,7 @@ class ShopProductsListener extends Events {
    */
   public function defaultEvent(){
 
-    \lib\Debugger\Debugger::log($this->get);
+    //\lib\Debugger\Debugger::log($this->get);
 
     $propertiesQb = $this->shopProduct->createQueryBuilder();
 

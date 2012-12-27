@@ -12,8 +12,9 @@ Ext.define('Core.applications.Shop', {
     'ProductEditorForm',
     'ProductImagesDataView'
   ],
-  storage: ['CatalogStore', 'ProductsStore', 'ProductStatusStore'],
-  model: ['ProductModel'],
+  storage: ['CatalogStore', 'ProductsStore', 'ProductStatusStore', 'ProductImagesStore'],
+  model: ['ProductModel', 'ProductImageModel'],
+
   css: ['css/shop.css'],
 
   launch: function (){

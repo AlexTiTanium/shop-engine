@@ -22,8 +22,11 @@ class ViewImage implements IView {
   }
 
   public function toString(){
-    ${$this->type}($this->image);
-    imagedestroy($this->image);
+    //${$this->type}($this->image);
+    //imagedestroy($this->image);
   }
 
+  public function error(\Exception $e) {
+    \lib\Debugger\Debugger::log($e);
+  }
 }

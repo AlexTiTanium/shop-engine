@@ -3,9 +3,10 @@ Ext.define('Shop.controller.ProductEditorWindow', {
   views:['Shop.view.ProductEditorWindow'],
   requires:[],
   refs:[
-    { ref:'window',   selector:'productEditorWindow' },
-    { ref:'form',     selector:'productEditorForm' },
-    { ref:'catalog',  selector:'shopMainWindow > catalog' }
+    { ref:'window',         selector:'productEditorWindow' },
+    { ref:'form',           selector:'productEditorForm' },
+    { ref:'productImages',  selector:'productImagesDataView' },
+    { ref:'catalog',        selector:'shopMainWindow > catalog' }
   ],
 
   init:function (){
@@ -61,6 +62,7 @@ Ext.define('Shop.controller.ProductEditorWindow', {
       Shop.model.ProductModel.load(window.editId, {
         success: function(product) {
           form.loadRecord(product);
+          me.loadImagesStore(product.getId());
         }
       });
 
@@ -73,9 +75,18 @@ Ext.define('Shop.controller.ProductEditorWindow', {
       record.save({
         callback:function (){
           form.loadRecord(record);
+          me.loadImagesStore(record.getId());
         }
       });
     }
+  },
+
+  loadImagesStore: function(idProduct){
+
+    var me = this, store = me.getProductImages().getStore();
+
+    store.proxy.extraParams = { productId: idProduct };
+    store.load();
   },
 
   syncData: function (form, callback){

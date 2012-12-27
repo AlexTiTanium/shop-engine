@@ -36,7 +36,7 @@ class LocalGridStorage implements IStorage {
 
     $path = $this->getPath();
 
-    $newFileName = md5($file->getName());
+    $newFileName = md5($file->getName().'.'.$file->getExtension());
     $newFolderHash = substr($newFileName, 0, 2);
 
     $dc = new DirCommander(new LocalDirCommanderAdapter(), $path);

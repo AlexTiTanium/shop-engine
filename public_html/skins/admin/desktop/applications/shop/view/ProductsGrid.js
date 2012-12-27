@@ -22,14 +22,18 @@ Ext.define('Shop.view.ProductsGrid', {
     }},
 
     { text:'Цена', dataIndex:'price', flex:2, editor:{
-      xtype:'numericfield',
-      name:'price',
-      allowNegative:false,
-      currencySymbol:'Грн.',
-      decimalPrecision:2,
-      allowDecimals:true,
-      alwaysDisplayDecimals:true
-    }},
+        xtype:'numericfield',
+        name:'price',
+        allowNegative:false,
+        currencySymbol:'Грн.',
+        decimalPrecision:2,
+        allowDecimals:true,
+        alwaysDisplayDecimals:true
+      },
+      renderer: function(value){
+        return Ext.util.Format.currency(value, ' Грн.', 2, true);
+      }
+    },
 
     { text:'Количество', dataIndex:'count', flex:1, editor:{
       xtype:'numberfield',

@@ -39,6 +39,7 @@ Ext.define('Override.data.Proxy', {
   listeners: {
     exception : function(proxy, response, operation) {
       Ext.Msg.alert('Server error', Ext.decode(response.responseText).msg);
+      console.log(operation);
     }
   }
 });

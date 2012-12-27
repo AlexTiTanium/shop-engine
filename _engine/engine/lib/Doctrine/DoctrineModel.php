@@ -50,6 +50,7 @@ class DoctrineModel {
       if($value instanceof DoctrineModel){
         $array[$key] = $value->toFlatArray();
       }
+
     }
 
     return $array;

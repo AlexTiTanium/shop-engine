@@ -371,10 +371,11 @@ class Products extends \lib\Doctrine\DoctrineModel {
    *
    * @param $imageName
    *
+   * @param array $data
    * @return Products
    */
-  public function addImage($imageName) {
-    $this->images[] = $imageName;
+  public function addImage($imageName, array $data = null) {
+    $this->images[] = array('id'=>$imageName, 'time'=> time(),'data'=> $data);
     return $this;
   }
 

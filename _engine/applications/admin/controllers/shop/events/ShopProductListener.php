@@ -50,7 +50,10 @@ class ShopProductListener extends Events {
       throw new SystemException('Product not found');
     }
 
-    $product->addImage($fileName);
+    $product->addImage($fileName, array(
+      'storage'=>'product_images',
+      'folder'=>substr(md5($fileName), 0, 2)
+    ));
 
     $this->productRepo->update($product);
   }

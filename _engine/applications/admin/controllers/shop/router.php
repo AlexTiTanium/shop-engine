@@ -11,6 +11,5 @@ $router->addEventListener('ShopProductsListener')->When(array('action'=>'product
 $router->addEventListener('ShopProductListener')->When(array('action'=>'product','type'=>'json'));
 $router->addEventListener('ShopProductImagesListener')->When(array('action'=>'productImages','type'=>'json'));
 
-
 // Default
 #$router->addEventListener('DefaultListener')->When(array('type'=>'json'));
