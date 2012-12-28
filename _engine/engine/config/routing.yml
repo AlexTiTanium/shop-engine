@@ -1,14 +1,14 @@
 storageApi:
-  patterns: '/storage/{:storage}/{:folder}/{:width}x{:height}-{:cropWay}/{:imageName}.{:type}'
+  patterns: '/storage/{:storage}/{:folder}/{:width}x{:height}-{:cropWay}:{:imageName}.{:type}'
 
   params:
     storage: '([a-zA-Z0-9_-]+)'
     folder: '([a-z0-9]{2})'
     width: '([0-9]+)'
     height: '([0-9]+)'
-    cropWay: '([a-zA-Z0-9-]+)'
+    cropWay: '(outbound|inset)'
     imageName: '([a-zA-Z0-9_-]+)'
-    type: '(png|jpg)'
+    type: '(png|jpg|gif)'
 
   values:
     application: 'api'

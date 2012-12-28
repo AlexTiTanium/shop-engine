@@ -142,13 +142,14 @@ Ext.define('Shop.controller.ProductEditorWindow', {
     }
 
     form.submit({
-      url:'/admin/shop/product/imageUpload.json',
+      url:'/admin/shop/productImages/upload.json',
       waitMsg:'Отправка файла на сервер...',
       params: {
           id: me.getCurrentProductId()
       },
       success:function (fp, o){
         form.up('window').close();
+        me.getProductImages().getStore().reload();
       },
       failure:function (form, action){
         Ext.Msg.alert('Error', action.result.msg);

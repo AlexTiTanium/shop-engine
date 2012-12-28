@@ -10,3 +10,5 @@ Manager::$Define->setControllersPath(PATH_APPLICATIONS.CURRENT_APPLICATION.DS);
 IncluderService::connectApplicationFileSystem();
 
 Session::open(new SessionWithoutAuthorizationDriver('api_session'));
+
+Manager::$Autoloader->addNamespace('Imagine', PATH_VENDOR);

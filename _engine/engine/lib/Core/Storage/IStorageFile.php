@@ -19,12 +19,31 @@ interface IStorageFile {
   /**
    * @return string
    */
+  public function getStoreId();
+
+  /**
+   * @return string
+   */
+  public function getPrefix();
+
+  /**
+   * @return string
+   */
   public function getExtension();
 
   /**
-   * @param $path
-   *
-   * @return string - new file name
+   * @param string $content
    */
-  public function copyTo($path);
+  public function write($content);
+
+  /**
+   * @return string
+   */
+  public function read();
+
+  /**
+   * @param $prefix
+   * @return void
+   */
+  public function setPrefix($prefix);
 }

@@ -2,6 +2,7 @@
 
 namespace lib\Core\Storage;
 use Upload\File;
+use lib\EngineExceptions\SystemException;
 use Upload\Storage\FileSystem;
 
 /**
@@ -19,12 +20,19 @@ class UploadedFile implements IStorageFile {
   private $file;
 
   /**
+   * @var string
+   */
+  private $storageId;
+
+  /**
+   * @param string $storageId
    * @param string $name
    */
-  public function __construct($name){
+  public function __construct($storageId, $name){
 
     $this->file = new File($name);
-    $this->file->setName(uniqid("",true));
+    $this->file->setName(str_replace('.','_',uniqid('',true)));
+    $this->storageId = $storageId;
   }
 
   /**
@@ -59,6 +67,7 @@ class UploadedFile implements IStorageFile {
    * @return string
    */
   public function getName() {
+
     return $this->file->getName();
   }
 
@@ -68,6 +77,7 @@ class UploadedFile implements IStorageFile {
    * @return string
    */
   public function getExtension() {
+
     return $this->file->getExtension();
   }
 
@@ -82,5 +92,49 @@ class UploadedFile implements IStorageFile {
     $storage->upload($this->file);
 
     return $this->file->getNameWithExtension();
+  }
+
+  /**
+   * @return string
+   */
+  public function getPrefix() {
+    return '';
+  }
+
+  /**
+   * @param string $content
+   * @throws SystemException
+   * @return void
+   */
+  public function write($content) {
+
+    throw new SystemException('Upload file object not support it');
+  }
+
+  /**
+   * @throws SystemException
+   * @return string
+   */
+  public function read() {
+
+    throw new SystemException('Upload file object not support it');
+  }
+
+  /**
+   * @param $prefix
+   * @throws SystemException
+   * @return void
+   */
+  public function setPrefix($prefix) {
+
+    throw new SystemException('Upload file object not support it');
+  }
+
+  /**
+   * @return string
+   */
+  public function getStoreId() {
+
+    return $this->storageId;
   }
 }

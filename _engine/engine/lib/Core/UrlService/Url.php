@@ -253,7 +253,8 @@ class Url {
   }
 
   /**
-   *
+   * @param string $key
+   * @return mixed
    */
   public function getParams($key = null){
 

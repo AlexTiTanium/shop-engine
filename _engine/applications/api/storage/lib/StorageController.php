@@ -14,7 +14,7 @@ class StorageController extends Controller {
    **/
   protected function setDefinition(){
     $this->setName('storage');
-    $this->setAllowedTypes('jpg', 'png');
+    $this->setAllowedTypes('jpg', 'png', 'gif');
     $this->setRouter(new ControllerRouter($this));
     View::setCurrent(View::getImageView());
   }

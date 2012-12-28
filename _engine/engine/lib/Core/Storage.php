@@ -23,8 +23,19 @@ class Storage {
     $this->storage = $storage;
   }
 
-  public function save($storeRootId, IStorageFile $file){
-    return $this->storage->write($storeRootId, $file);
+  public function save(IStorageFile $file){
+    return $this->storage->save($file);
   }
 
+  public function get($storeRootId, $fileWithExtensionId){
+    return $this->storage->get($storeRootId, $fileWithExtensionId);
+  }
+
+  public function read($storeRootId, $fileWithExtensionId){
+    return $this->storage->read($storeRootId, $fileWithExtensionId);
+  }
+
+  public function write($storeRootId, $fileWithExtensionId, $content){
+    $this->storage->write($storeRootId, $fileWithExtensionId, $content);
+  }
 }

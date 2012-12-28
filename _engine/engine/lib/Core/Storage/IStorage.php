@@ -12,10 +12,31 @@ namespace lib\Core\Storage;
 interface IStorage {
 
   /**
-   * @param string $storeId
    * @param IStorageFile $file
    *
    * @return string - new file name
    */
-  public function write($storeId, IStorageFile $file);
+  public function save(IStorageFile $file);
+
+  /**
+   * @param string $storeId
+   * @param string $fileIdWithExtension
+   *
+   * @return IStorageFile $file
+   */
+  public function get($storeId, $fileIdWithExtension);
+
+  /**
+   * @param IStorageFile $file
+   * @param mixed $content
+   * @return void
+   */
+  public function write(IStorageFile $file, $content);
+
+  /**
+   * @param IStorageFile $file
+   * @return mixed
+   */
+  public function read(IStorageFile $file);
+
 }

@@ -6,7 +6,7 @@ Ext.define('Shop.view.ProductImagesDataView', {
   tpl:[
     '<tpl for=".">',
       '<div class="thumb-wrap" id="{id}">',
-      '<div class="thumb"><img src="/storage/{data.storage}/{data.folder}/{id}" title="{name}"></div>',
+      '<div class="thumb"><img src="/storage/{data.storage}/{data.folder}/80x60-outbound:{id}" title="{name}"></div>',
       '<span class="x-editable">{time:date("d.m.y")}</span></div>',
     '</tpl>',
     '<div class="x-clear"></div>'

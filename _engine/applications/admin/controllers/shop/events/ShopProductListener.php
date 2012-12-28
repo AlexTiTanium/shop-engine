@@ -25,40 +25,6 @@ class ShopProductListener extends Events {
   }
 
   /**
-   * Upload product image
-   *
-   * @throws SystemException
-   */
-  public function imageUpload(){
-
-    $this->post->checkToken();
-
-    $file = new UploadedFile('image');
-
-    $file->addValidation('size',      '5M');
-    $file->addValidation('type',      array('image/png', 'image/jpg', 'image/gif'));
-    $file->addValidation('extension', array('jpg', 'png', 'gif'));
-
-    $fileName = Manager::$Storage->save('product_images', $file);
-
-    /**
-     * @var Products $product
-     */
-    $product = $this->productRepo->find($this->post->getRequired('id'));
-
-    if(!$product){
-      throw new SystemException('Product not found');
-    }
-
-    $product->addImage($fileName, array(
-      'storage'=>'product_images',
-      'folder'=>substr(md5($fileName), 0, 2)
-    ));
-
-    $this->productRepo->update($product);
-  }
-
-  /**
    * Update product data
    */
   public function update(){
