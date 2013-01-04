@@ -16,6 +16,46 @@ class StorageListener extends Events {
   }
 
   /**
+   * @param $binData
+   * @return ImageInterface
+   */
+  private function loadImage($binData){
+
+    $imagine = new Imagine();
+    $imagine = $imagine->load($binData);
+
+    return $imagine;
+  }
+
+  /**
+   * @param $binData
+   * @param $width
+   * @param $height
+   * @param $way
+   * @return ImageInterface
+   */
+  private function processingImage($binData, $width, $height, $way){
+
+    $image = $this->loadImage($binData);
+    $processedImage = null;
+    $box = new Box($width, $height);
+
+    switch($way){
+
+      case 'outbound':
+      case 'inset':
+
+        $processedImage = $image->thumbnail($box, $way);
+
+        break;
+
+    }
+
+    return $processedImage == null ? $image : $processedImage;
+  }
+
+  /**
+   * Create thumbnail show and save it
    *
    */
   public function defaultEvent(){
@@ -25,27 +65,20 @@ class StorageListener extends Events {
       $this->url->getParams('imageName').'.'.$this->url->getType()
     );
 
-    $imagine = new Imagine();
+    $imageBin = $this->processingImage(
+      $file->read(),
+      $this->url->getParams('width'),
+      $this->url->getParams('height'),
+      $this->url->getParams('cropWay')
+    );
 
-    $imagine = $imagine->load($file->read());
+    $prefix = $this->url->getParams('width').'x'.$this->url->getParams('height').'-'.$this->url->getParams('cropWay');
 
-    $box = new Box($this->url->getParams('width'), $this->url->getParams('height'));
+    $file->setPrefix($prefix);
 
-    $thumbnail = $imagine->thumbnail($box, $this->url->getParams('cropWay'));
+    $file->write($imageBin->get($this->url->getType()));
 
-    $thumbnail->show($this->url->getType());
-
-
-    //$file->setPrefix('10x10-box');
-
-    //$file->write('dsdsdsdsd');
-
-
-
-    //\lib\Debugger\Debugger::log($file);
-
-    //$this->storage->createModification($stotage, $fileId, $modificationId, $content);
-    //echo "Works fine";
+    $imageBin->show($this->url->getType());
   }
 
 }

@@ -6,9 +6,17 @@ Ext.define('Shop.view.ProductEditorForm', {
     labelAlign:'top',
     msgTarget:'side'
   },
+
+  layout: {
+    type: 'vbox',
+    align: 'stretch',
+    pack: 'start'
+  },
+
   bodyPadding:5,
   items:[
     {
+      height: 140,
       xtype:'fieldset',
       title:'Общие свойства',
       defaultType:'textfield',
@@ -101,21 +109,22 @@ Ext.define('Shop.view.ProductEditorForm', {
       ]
     },
     {
+      flex:1,
       xtype:'tabpanel',
       plain:true,
-      activeTab:0,
-      height:235,
+      activeTab: 0,
+      layout:'fit',
       defaults:{
         bodyPadding:10
       },
       items:[
         {
           title:'Описание товара',
+          layout:'fit',
           defaults:{
             width:230
           },
           defaultType:'textfield',
-          layout:'fit',
           items:{
             xtype:'htmleditor',
             name:'description',
@@ -156,6 +165,7 @@ Ext.define('Shop.view.ProductEditorForm', {
           items:[
             {
               xtype:'panel',
+              autoScroll: true,
               items:[
                 { xtype:'productImagesDataView' }
               ],

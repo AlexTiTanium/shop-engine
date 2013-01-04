@@ -161,7 +161,7 @@ interface ManipulatorInterface
 
     /**
      * Applies a given mask to current image's alpha channel
-     *
+          *
      * @param ImageInterface $mask
      *
      * @return ManipulatorInterface
