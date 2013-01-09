@@ -375,7 +375,13 @@ class Products extends \lib\Doctrine\DoctrineModel {
    * @return Products
    */
   public function addImage($imageName, array $data = null) {
-    $this->images[] = array('id'=>$imageName, 'time'=> time(),'data'=> $data);
+
+    $info = pathinfo($imageName);
+    $fileId =  basename($imageName,'.'.$info['extension']);
+
+    if(!$this->defaultImageId){ $this->defaultImageId = $fileId; }
+
+    $this->images[] = array('id'=>$fileId, 'file'=>$imageName, 'time'=> time(),'data'=> $data);
     return $this;
   }
 
@@ -444,5 +450,58 @@ class Products extends \lib\Doctrine\DoctrineModel {
     public function getMarking()
     {
         return $this->marking;
+    }
+    /**
+     * @var string $defaultImageId
+     *
+     * @ODM\Field(name="defaultImageId", type="string")
+     */
+    protected $defaultImageId;
+
+
+    /**
+     * Set defaultImageId
+     *
+     * @param string $defaultImageId
+     * @return Products
+     */
+    public function setDefaultImageId($defaultImageId)
+    {
+        $this->defaultImageId = $defaultImageId;
+        return $this;
+    }
+
+    /**
+     * Get defaultImageId
+     *
+     * @return string $defaultImageId
+     */
+    public function getDefaultImageId()
+    {
+      if($this->defaultImageId){ return $this->defaultImageId; }
+      if(!$this->images){ return null; }
+
+      return $this->images[0]['id'];
+    }
+
+    /**
+     * Get defaultImage
+     *
+     * @return array $defaultImageId
+     */
+    public function getDefaultImage()
+    {
+      if(!$this->images){ return null; }
+      $id = $this->getDefaultImageId();
+      if(!$id){ return $id; }
+
+      foreach($this->images as $image){
+
+        if($image['id'] == $id){
+          return $image;
+        }
+      }
+
+      return null;
     }
 }

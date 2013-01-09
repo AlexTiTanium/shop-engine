@@ -27,6 +27,8 @@ Documents\Shop\Products:
       type: hash
     attributes:
       type: hash
+    defaultImageId:
+      type: string
     images:
       type: hash
     status:

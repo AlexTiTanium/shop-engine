@@ -1,10 +1,8 @@
 <?php
 
 use lib\Core\Events;
-use lib\EngineExceptions\SystemException;
 use Documents\Shop\Products;
 use models\ODM\Repositories\ShopProductsRepository;
-use lib\Core\Storage\UploadedFile;
 use lib\Core\Manager;
 use lib\Core\Data;
 use lib\Debugger\Debugger;

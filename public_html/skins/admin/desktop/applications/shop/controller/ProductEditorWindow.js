@@ -6,7 +6,8 @@ Ext.define('Shop.controller.ProductEditorWindow', {
     { ref:'window',         selector:'productEditorWindow' },
     { ref:'form',           selector:'productEditorForm' },
     { ref:'productImages',  selector:'productImagesDataView' },
-    { ref:'catalog',        selector:'shopMainWindow > catalog' }
+    { ref:'catalog',        selector:'shopMainWindow > catalog' },
+    { ref:'productDefaultImage', selector:'#productDefaultImage' }
   ],
 
   init:function (){
@@ -39,6 +40,12 @@ Ext.define('Shop.controller.ProductEditorWindow', {
         }
       },
 
+      'productEditorWindow button[action=default]':{
+        click:function (btn){
+          console.log(btn); me.setProductDefaultImage('dsds');
+        }
+      },
+
       'ProductImageUploadForm button[action=upload]': {
         click:function (btn){
 
@@ -63,6 +70,7 @@ Ext.define('Shop.controller.ProductEditorWindow', {
         success: function(product) {
           form.loadRecord(product);
           me.loadImagesStore(product.getId());
+          me.setProductDefaultImage('dsds');
         }
       });
 
@@ -79,6 +87,14 @@ Ext.define('Shop.controller.ProductEditorWindow', {
         }
       });
     }
+  },
+
+  setProductDefaultImage: function(url){
+
+    var me = this;
+
+    console.log(me.getProductDefaultImage());
+
   },
 
   loadImagesStore: function(idProduct){

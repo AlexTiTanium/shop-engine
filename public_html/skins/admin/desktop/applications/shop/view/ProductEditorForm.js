@@ -32,6 +32,7 @@ Ext.define('Shop.view.ProductEditorForm', {
 
             {
               xtype:'image',
+              id: 'productDefaultImage',
               width:100, height:100,
               padding:'0 10 0 0',
               src:Ext.imagePath + '/noimage.jpg'
@@ -178,10 +179,15 @@ Ext.define('Shop.view.ProductEditorForm', {
                   {
                     text:'Добавить',
                     iconCls:'ux-icon-add',
+                    action: 'add',
                     handler:function (){
                       var win = Ext.create('Shop.view.ProductImageUploadForm');
                       win.show();
                     }
+                  },{
+                    action: 'default',
+                    text: 'По умолчанию',
+                    iconCls: 'ux-icon-favorite'
                   }
                 ]
               }
