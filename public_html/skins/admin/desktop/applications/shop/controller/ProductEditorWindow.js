@@ -69,8 +69,7 @@ Ext.define('Shop.controller.ProductEditorWindow', {
       Shop.model.ProductModel.load(window.editId, {
         success: function(product) {
           form.loadRecord(product);
-          me.loadImagesStore(product.getId());
-          me.setProductDefaultImage('dsds');
+          me.loadImagesStore(product);
         }
       });
 
@@ -97,12 +96,24 @@ Ext.define('Shop.controller.ProductEditorWindow', {
 
   },
 
-  loadImagesStore: function(idProduct){
+  loadImagesStore: function(product){
 
     var me = this, store = me.getProductImages().getStore();
 
-    store.proxy.extraParams = { productId: idProduct };
-    store.load();
+    store.proxy.extraParams = { productId:  product.getId() };
+
+    store.load(function(records, operation, success) {
+
+      var image = store.getById(product.get('defaultImageId'));
+
+      var storage = image.get('data').storage;
+      var folder = image.get('data').storage;
+
+      me.getProductDefaultImage().setSrc('/storage/'+storage+'/25/80x60-outbound:50eddbd13334b7_59603449.jpg');
+      console.log(store.getById(id));
+    });
+
+    //me.setProductDefaultImage('dsds');
   },
 
   syncData: function (form, callback){
